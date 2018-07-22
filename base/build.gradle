@@ -1,0 +1,60 @@
+/*
+
+    ./gradlew :base:uploadArchives
+
+    implementation "io.github.kmeret:base:1.0.1"
+
+ */
+
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'maven'
+
+def libraryCode = 101
+def libraryVersion = '1.0.1'
+
+android {
+    compileSdkVersion 28
+
+    defaultConfig {
+        minSdkVersion 14
+        targetSdkVersion 28
+        versionCode libraryCode
+        versionName libraryVersion
+        vectorDrawables.useSupportLibrary = true
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    implementation "androidx.appcompat:appcompat:$androidx"
+    implementation "androidx.recyclerview:recyclerview:$androidx"
+
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.1.0-alpha4'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha4'
+}
+
+group = "io.github.kmeret"
+version = libraryVersion
+
+uploadArchives {
+    repositories {
+        mavenLocal()
+        mavenInstaller {
+            mavenLocal()
+        }
+    }
+}
