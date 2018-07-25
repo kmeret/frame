@@ -3,8 +3,10 @@
 
 buildscript {
     ext {
-        studio = '3.2.0-beta04'
         kotlin_version = '1.2.51'
+        studio = '3.2.0-beta04'
+        koin = '1.0.0-beta-3'
+        retrofit = '2.4.0'
         realm = '5.3.1'
         androidx = '1.0.0-beta01'
     }
