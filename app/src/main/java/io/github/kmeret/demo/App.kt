@@ -2,7 +2,6 @@ package io.github.kmeret.demo
 
 import android.app.Application
 import io.github.kmeret.demo.network.NetworkModule
-import io.realm.Realm
 import org.koin.android.ext.android.startKoin
 
 class App : Application() {
@@ -17,6 +16,6 @@ class App : Application() {
             NetworkModule
     ))
 
-    private fun initStorage() = Realm.init(this)
+    private fun initStorage() {}
 
 }
