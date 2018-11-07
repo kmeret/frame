@@ -1,35 +1,37 @@
 package io.github.kmeret.demo.navigation
 
 import android.os.Bundle
-import android.util.Log
 import io.github.kmeret.base.android.BaseActivity
+import io.github.kmeret.demo.App
 import io.github.kmeret.demo.R
-import io.github.kmeret.demo.network.github.GithubInterface
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
-import org.koin.android.ext.android.inject
+import io.github.kmeret.demo.network.github.GithubRepo
+import io.github.kmeret.demo.network.github.GithubService
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import javax.inject.Inject
 
 class NavActivity : BaseActivity() {
 
-    private val githubInterface: GithubInterface by inject()
+    @Inject
+    lateinit var githubService: GithubService
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_nav)
 
-        val sub = githubInterface.getStarredRepoListByUsername("kmeret")
-                .subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(
-                        {
-                            it.forEach {
-                                Log.d("GithubRepo", it.toString())
-                            }
-                        },
-                        { error ->
-                            Log.d("GithubRepoError", error.message)
-                        }
-                )
+        (application as App).appComponent.inject(this)
+
+        githubService.getStarredRepoListByUsername("kmeret").enqueue(object : Callback<List<GithubRepo>> {
+            override fun onResponse(call: Call<List<GithubRepo>>, response: Response<List<GithubRepo>>) {
+
+            }
+
+            override fun onFailure(call: Call<List<GithubRepo>>, t: Throwable) {
+
+            }
+
+        })
 
     }
 }
