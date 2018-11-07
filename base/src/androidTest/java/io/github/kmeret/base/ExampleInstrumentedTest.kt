@@ -1,4 +1,4 @@
-package io.github.kmeret.demo
+package io.github.kmeret.base
 
 import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner
 import androidx.test.platform.app.InstrumentationRegistry
@@ -9,7 +9,7 @@ import org.junit.runner.RunWith
 /**
  * Instrumented test, which will execute on an Android device.
  *
- * See [testing documentation](http://d.android.com/tools/testing).
+ * @see [Testing documentation](http://d.android.com/tools/testing)
  */
 @RunWith(AndroidJUnit4ClassRunner::class)
 class ExampleInstrumentedTest {
@@ -17,6 +17,7 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("io.github.kmeret.demo", appContext.packageName)
+
+        assertEquals("io.github.kmeret.base.test", appContext.packageName)
     }
 }
