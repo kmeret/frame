@@ -8,7 +8,7 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "io.github.kmeret.demo"
-        minSdkVersion 14
+        minSdkVersion 16
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
@@ -16,15 +16,14 @@ android {
         vectorDrawables.useSupportLibrary = true
     }
     signingConfigs {
-        conf {
+        kmeret {
             try {
                 storeFile file("keystore")
                 storePassword KEYSTORE_PASSWORD
                 keyAlias "key"
                 keyPassword KEY_PASSWORD
             }
-            catch (ex) {
-                Log.d("Gradle", ex.localizedMessage)
+            catch (ignored) {
                 throw new Exception("You should define KEYSTORE_PASSWORD and KEY_PASSWORD " +
                         "in global gradle.properties file.")
             }
@@ -32,13 +31,13 @@ android {
     }
     buildTypes {
         debug {
-            signingConfig signingConfigs.conf
+            signingConfig signingConfigs.kmeret
             multiDexEnabled false
             minifyEnabled false
             shrinkResources false
         }
         release {
-            signingConfig signingConfigs.conf
+            signingConfig signingConfigs.kmeret
             multiDexEnabled false
             minifyEnabled true
             shrinkResources true
@@ -50,7 +49,7 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation ("io.github.kmeret:base:1.0.2")
+    implementation "io.github.kmeret:base:1.0.2"
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
@@ -66,11 +65,11 @@ dependencies {
     implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit"
 
     implementation "androidx.appcompat:appcompat:$androidx"
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.2'
-    implementation 'com.google.android.material:material:1.0.0-beta01'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'com.google.android.material:material:1.1.0-alpha01'
 
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test:runner:1.1.0-alpha4'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha4'
+    androidTestImplementation 'androidx.test:runner:1.1.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
 }
 
