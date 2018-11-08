@@ -1,6 +1,5 @@
 package io.github.kmeret.base.android.extensions
 
-import android.widget.LinearLayout
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -10,7 +9,7 @@ fun RecyclerView.attachAdapter(
         reverse: Boolean = false
 ) {
     setHasFixedSize(false)
-    layoutManager = LinearLayoutManager(this.context, LinearLayout.VERTICAL, reverse)
+    layoutManager = LinearLayoutManager(this.context, RecyclerView.VERTICAL, reverse)
     this.adapter = adapter
 }
 
