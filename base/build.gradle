@@ -13,21 +13,17 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'maven'
 
-def libraryCode = 102
-def libraryVersion = '1.0.2'
-def libraryGroupId = 'io.github.kmeret'
-
-group = libraryGroupId
-version = libraryVersion
+group = domain_name
+version = version_string
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion max_sdk
 
     defaultConfig {
-        minSdkVersion 16
-        targetSdkVersion 28
-        versionCode libraryCode
-        versionName libraryVersion
+        minSdkVersion min_sdk
+        targetSdkVersion max_sdk
+        versionCode version_number
+        versionName version_string
         vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -47,11 +43,11 @@ dependencies {
 
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
     implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
-    implementation 'com.squareup.okhttp3:logging-interceptor:3.11.0'
-    implementation 'com.squareup.picasso:picasso:2.71828'
+    implementation "com.squareup.okhttp3:logging-interceptor:$okhttp_version"
+    implementation "com.squareup.picasso:picasso:$picasso_version"
 
     implementation "androidx.appcompat:appcompat:$androidx_version"
-    implementation "androidx.recyclerview:recyclerview:1.0.0"
+    implementation "androidx.recyclerview:recyclerview:$recycler_version"
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.1.0'
