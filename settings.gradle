@@ -1,1 +1,1 @@
-include ':app', ':base'
+include ':demo', ':android', ':network'
