@@ -1,6 +1,5 @@
 package io.github.kmeret.frame.network
 
-import android.util.Log
 import android.widget.ImageView
 import com.squareup.picasso.Picasso
 import org.json.JSONObject
@@ -8,33 +7,23 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class ApiException : Exception()
-
-fun <T> Call<T>.makeRequest(onSuccess: (response: T) -> Unit,
-                            onError: (ex: ApiException) -> Unit) = enqueue(object : Callback<T> {
+fun <T> Call<T>.request(onSuccess: (response: T) -> Unit,
+                        onError: (ex: ApiException) -> Unit) = enqueue(object : Callback<T> {
 
     override fun onResponse(call: Call<T>?, response: Response<T>) {
         if (!response.isSuccessful) {
-            val body = response.errorBody()?.string()
-            if (body == null) {
-                Log.d("RetrofitError", "Null error body!")
-                onError.invoke(ApiException())
-                return
-            }
+            val errorBody = response.errorBody()?.string() ?: return
             try {
-                Log.d("RetrofitError", JSONObject(body).getString("message"))
-                onError.invoke(ApiException())
+                onError.invoke(ApiException(JSONObject(errorBody).getString("message")))
                 return
             } catch (ex: Exception) {
-                Log.d("RetrofitError", ex.localizedMessage)
                 onError.invoke(ApiException())
             }
         }
 
         val body = response.body()
         if (body == null) {
-            Log.d("RetrofitError", "Null response body!")
-            onError.invoke(ApiException())
+            onError.invoke(ApiException("Null response body!"))
             return
         }
 
@@ -43,9 +32,8 @@ fun <T> Call<T>.makeRequest(onSuccess: (response: T) -> Unit,
 
     override fun onFailure(call: Call<T>?, t: Throwable) {
         val error = t.message ?: return
-        Log.d("RetrofitError", error)
-        onError.invoke(ApiException())
+        onError.invoke(ApiException(error))
     }
 })
 
-fun ImageView.loadWithUrl(url: String) = Picasso.get().load(url).into(this)
+fun ImageView.byUrl(url: String) = Picasso.get().load(url).into(this)
