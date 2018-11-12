@@ -1,8 +1,6 @@
 package io.github.kmeret.frame.android.extensions
 
-import android.annotation.SuppressLint
 import android.content.Context
-import android.net.ConnectivityManager
 import android.util.TypedValue
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -17,11 +15,4 @@ fun Context.resolveFragmentManager(): FragmentManager {
         is Fragment -> childFragmentManager
         else -> throw Exception("Cannot resolve!")
     }
-}
-
-@SuppressLint("MissingPermission")
-fun Context.isOnline(): Boolean {
-    val manager = (this.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager)
-    val network = manager.activeNetworkInfo
-    return (network != null && network.isAvailable && network.isConnected)
 }

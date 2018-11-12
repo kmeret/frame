@@ -1,7 +1,7 @@
 package io.github.kmeret.frame.demo.navigation
 
 import android.os.Bundle
-import io.github.kmeret.frame.android.BaseActivity
+import io.github.kmeret.frame.android.base.BaseActivity
 import io.github.kmeret.frame.demo.App
 import io.github.kmeret.frame.demo.R
 import io.github.kmeret.frame.demo.github.GithubRepo

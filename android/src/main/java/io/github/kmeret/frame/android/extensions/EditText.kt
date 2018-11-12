@@ -19,6 +19,3 @@ fun EditText.onTextChanged(action: (text: String, length: Int) -> Unit) {
         override fun afterTextChanged(s: Editable?) {}
     })
 }
-
-
-

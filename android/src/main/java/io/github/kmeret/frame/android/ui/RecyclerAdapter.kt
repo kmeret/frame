@@ -1,16 +1,22 @@
-package io.github.kmeret.frame.android.list
+package io.github.kmeret.frame.android.ui
 
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import io.github.kmeret.frame.android.extensions.inflate
 
-class RecyclerAdapter<T : Identifiable>(
+class RecyclerAdapter<T : RecyclerAdapter.Identifiable>(
         private val templateResId: Int,
         private val onBindItem: ((item: T, rootView: View) -> Unit)
-) : RecyclerView.Adapter<ItemViewHolder>() {
+) : RecyclerView.Adapter<RecyclerAdapter.ItemViewHolder>() {
 
-    private var list: List<T> = emptyList()
+    class ItemViewHolder(val rootView: View) : RecyclerView.ViewHolder(rootView)
+
+    interface Identifiable {
+        val id: Long
+    }
+
+    private var list: MutableList<T> = ArrayList()
 
     init {
         this.setHasStableIds(true)
@@ -26,14 +32,14 @@ class RecyclerAdapter<T : Identifiable>(
 
     override fun getItemId(position: Int) = list[position].id
 
-    fun getList() = list
+    fun getList(): List<T> = list
 
     fun updateList(list: List<T>) {
-        this.list = list
+        this.list.clear()
+        this.list.addAll(list)
         notifyDataSetChanged()
     }
 
     private fun inflate(parent: ViewGroup) = parent.inflate(templateResId)
-//            LayoutInflater.from(parent.context).inflate(templateResId, parent, false)
 
 }

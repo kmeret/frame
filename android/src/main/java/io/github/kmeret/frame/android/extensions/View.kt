@@ -1,11 +1,9 @@
 package io.github.kmeret.frame.android.extensions
 
-import android.content.Context
 import android.view.*
-import android.view.inputmethod.InputMethodManager
 import androidx.core.view.GestureDetectorCompat
 
-fun View.visibility(visible: Boolean) {
+fun View.visible(visible: Boolean) {
     this.visibility = if (visible) View.VISIBLE else View.GONE
 }
 
@@ -36,15 +34,5 @@ fun GestureDetectorCompat.onDoubleTap(action: () -> Unit) =
             override fun onSingleTapConfirmed(e: MotionEvent?) = false
         })
 
-fun View.keyboardVisible(visible: Boolean) {
-    val service = (context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager)
-    if (visible)
-        service.showSoftInputFromInputMethod(windowToken, InputMethodManager.SHOW_FORCED)
-    else
-        service.hideSoftInputFromWindow(windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
-}
-
-fun ViewGroup.inflate(layoutRes: Int, attach: Boolean = false) =
+fun ViewGroup.inflate(layoutRes: Int, attach: Boolean = false): View =
         LayoutInflater.from(context).inflate(layoutRes, this, attach)
-
-

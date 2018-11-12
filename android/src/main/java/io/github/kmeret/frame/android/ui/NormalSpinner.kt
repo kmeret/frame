@@ -1,4 +1,4 @@
-package io.github.kmeret.frame.android.widget
+package io.github.kmeret.frame.android.ui
 
 import android.content.Context
 import android.content.res.Resources
