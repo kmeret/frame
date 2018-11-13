@@ -12,8 +12,14 @@ abstract class BaseFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater,
                               container: ViewGroup?,
-                              savedInstanceState: Bundle?): View =
-            layoutInflater.inflate(layoutResId, container, false)
+                              savedInstanceState: Bundle?): View {
+
+        val rootView = layoutInflater.inflate(layoutResId, container, false)
+        initView(rootView)
+        return rootView
+    }
+
+    abstract fun initView(rootView: View)
 
     protected fun getPermissionManager() = getBaseActivity().permissionManager
 

@@ -7,9 +7,10 @@ class App : Application() {
 
     val appComponent: AppComponent by lazy {
         DaggerAppComponent.builder()
-                //.contextModule(ContextModule(this))
+                .contextModule(ContextModule(this))
                 .networkModule(NetworkModule)
-                //.storageModule(StorageModule)
+                .storageModule(StorageModule)
+                .domainModule(DomainModule)
                 .build()
     }
 

@@ -7,15 +7,18 @@ import io.github.kmeret.frame.android.permissions.PermissionManager
 
 abstract class BaseActivity : AppCompatActivity() {
 
-    lateinit var permissionManager: PermissionManager
     abstract val layoutResId: Int
+    lateinit var permissionManager: PermissionManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true)
         permissionManager = PermissionManager(this)
         setContentView(layoutResId)
+        initView()
     }
+
+    abstract fun initView()
 
     override fun onRequestPermissionsResult(requestCode: Int,
                                             permissions: Array<out String>,

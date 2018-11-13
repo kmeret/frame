@@ -1,1 +1,1 @@
-include ':demo', ':template', ':android', ':network'
+include ':demo', ':template', ':network', ':android', ':lifecycle'

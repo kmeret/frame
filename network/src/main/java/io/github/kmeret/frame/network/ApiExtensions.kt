@@ -7,32 +7,26 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-fun <T> Call<T>.request(onSuccess: (response: T) -> Unit,
-                        onError: (ex: ApiException) -> Unit) = enqueue(object : Callback<T> {
+fun <T> Call<T>.request(onSuccess: (response: T) -> Unit) = enqueue(object : Callback<T> {
 
     override fun onResponse(call: Call<T>?, response: Response<T>) {
         if (!response.isSuccessful) {
             val errorBody = response.errorBody()?.string() ?: return
             try {
-                onError.invoke(ApiException(JSONObject(errorBody).getString("message")))
-                return
+                throw ApiException(JSONObject(errorBody).getString("message"))
             } catch (ex: Exception) {
-                onError.invoke(ApiException())
+                throw ApiException()
             }
         }
 
-        val body = response.body()
-        if (body == null) {
-            onError.invoke(ApiException("Null response body!"))
-            return
-        }
+        val body = response.body() ?: throw ApiException()
 
         onSuccess.invoke(body)
     }
 
     override fun onFailure(call: Call<T>?, t: Throwable) {
-        val error = t.message ?: return
-        onError.invoke(ApiException(error))
+        val error = t.message ?: throw ApiException()
+        throw ApiException(error)
     }
 })
 
