@@ -8,7 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class ApiFactory<T> {
 
-    fun create(apiInterface: Class<T>, baseUrl: String, headers: List<HeaderInterceptor>): T {
+    fun create(apiInterface: Class<T>, baseUrl: String, headers: List<HeaderInterceptor> = emptyList()): T {
 
         val retrofitBuilder = Retrofit.Builder().baseUrl(baseUrl)
                 .addConverterFactory(GsonConverterFactory.create())

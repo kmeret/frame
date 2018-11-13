@@ -4,7 +4,7 @@ import android.os.Bundle
 import io.github.kmeret.frame.android.base.BaseActivity
 import io.github.kmeret.frame.demo.App
 import io.github.kmeret.frame.demo.R
-import io.github.kmeret.frame.demo.github.GithubRepo
+import io.github.kmeret.frame.demo.github.model.GithubRepo
 import io.github.kmeret.frame.demo.github.GithubService
 import retrofit2.Call
 import retrofit2.Callback
@@ -13,12 +13,13 @@ import javax.inject.Inject
 
 class NavActivity : BaseActivity() {
 
+    override val layoutResId = R.layout.activity_nav
+
     @Inject
     lateinit var githubService: GithubService
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_nav)
 
         (application as App).appComponent.inject(this)
 
@@ -34,4 +35,5 @@ class NavActivity : BaseActivity() {
         })
 
     }
+
 }

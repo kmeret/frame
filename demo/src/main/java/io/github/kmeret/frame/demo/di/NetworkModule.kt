@@ -12,6 +12,6 @@ object NetworkModule {
     @Provides
     @Reusable
     fun provideGithubService() = ApiFactory<GithubService>()
-            .create("https://api.github.com/", GithubService::class.java)
+            .create(GithubService::class.java, "https://api.github.com/")
 
 }
