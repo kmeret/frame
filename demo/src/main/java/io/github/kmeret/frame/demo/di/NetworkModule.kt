@@ -1,17 +1,14 @@
 package io.github.kmeret.frame.demo.di
 
-import dagger.Module
-import dagger.Provides
-import dagger.Reusable
 import io.github.kmeret.frame.demo.github.GithubService
 import io.github.kmeret.frame.network.ApiFactory
+import org.koin.dsl.module.module
 
-@Module
-object NetworkModule {
-
-    @Provides
-    @Reusable
-    fun provideGithubService() = ApiFactory<GithubService>()
-            .create(GithubService::class.java, "https://api.github.com/")
-
+val networkModule = module {
+    single {
+        ApiFactory<GithubService>().create(
+                GithubService::class.java,
+                "https://api.github.com/"
+        )
+    }
 }

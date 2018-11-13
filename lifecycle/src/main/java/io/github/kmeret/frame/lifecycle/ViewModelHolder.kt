@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 
 interface ViewModelHolder<VM : ViewModel> {
 
-    var viewModel: VM
+    val viewModel: VM
     val viewModelClass: Class<VM>
 
     fun initViewModel()

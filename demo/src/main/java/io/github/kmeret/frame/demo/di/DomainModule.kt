@@ -1,16 +1,11 @@
 package io.github.kmeret.frame.demo.di
 
-import dagger.Module
-import dagger.Provides
-import dagger.Reusable
 import io.github.kmeret.frame.demo.domain.stars.GetStarredRepoUseCase
-import io.github.kmeret.frame.demo.github.GithubService
+import io.github.kmeret.frame.demo.domain.stars.StarsViewModel
+import org.koin.android.viewmodel.ext.koin.viewModel
+import org.koin.dsl.module.module
 
-@Module
-object DomainModule {
-
-    @Provides
-    @Reusable
-    fun getStarredRepoUseCase(githubService: GithubService) = GetStarredRepoUseCase(githubService)
-
+val starsModule = module {
+    single { GetStarredRepoUseCase(get()) }
+    viewModel { StarsViewModel(get()) }
 }
