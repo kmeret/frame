@@ -2,7 +2,7 @@ buildscript {
     ext {
         domain_name = 'io.github.kmeret.frame'
 
-        min_sdk = 16
+        min_sdk = 17
         max_sdk = 28
 
         version_number = 1

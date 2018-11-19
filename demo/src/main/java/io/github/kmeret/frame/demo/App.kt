@@ -15,7 +15,7 @@ class App : Application() {
     private fun initDI() = startKoin(this, listOf(
             networkModule,
             storageModule,
-            starsModule
+            viewModelModule
     ))
 
 }

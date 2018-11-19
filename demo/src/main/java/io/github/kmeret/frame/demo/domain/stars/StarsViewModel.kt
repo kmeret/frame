@@ -1,17 +1,26 @@
 package io.github.kmeret.frame.demo.domain.stars
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
+import io.github.kmeret.frame.demo.domain.cases.NetworkLiveUseCase
+import io.github.kmeret.frame.demo.domain.entity.Repo
+import io.github.kmeret.frame.demo.github.GithubConfig
+import io.github.kmeret.frame.demo.github.GithubService
+import io.github.kmeret.frame.demo.github.model.GithubRepo
 
-//todo inject in constructor
-class StarsViewModel(private val getStarredRepoUseCase: GetStarredRepoUseCase) : ViewModel() {
+class StarsViewModel(githubService: GithubService) : ViewModel() {
 
+    private val useCase = NetworkLiveUseCase<List<GithubRepo>>()
 
-    private val repoList = MutableLiveData<List<Repo>>()
+    private val repoList = Transformations.map(useCase.data) { githubRepoList ->
+        githubRepoList.map { it.map() }
+    }
+
     fun getRepoList(): LiveData<List<Repo>> = repoList
 
     init {
-        getStarredRepoUseCase.execute()
+        useCase.execute(githubService.getStarredRepoListByUsername(GithubConfig.userName))
     }
+
 }

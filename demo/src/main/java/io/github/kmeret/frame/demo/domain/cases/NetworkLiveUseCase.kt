@@ -1,12 +1,13 @@
-package io.github.kmeret.frame.demo.domain.stars
+package io.github.kmeret.frame.demo.domain.cases
 
+import io.github.kmeret.frame.lifecycle.LiveUseCase
 import io.github.kmeret.frame.network.*
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import kotlin.Exception
 
-class NetworkUseCase<Response> : UseCase<Call<Response>, Response>() {
+class NetworkLiveUseCase<Response> : LiveUseCase<Call<Response>, Response>() {
 
     override fun execute(request: Call<Response>) {
 
