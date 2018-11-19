@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="app_name">Android</string>
+	<string name="network_exception">Проблемы с сетью!</string>
+	<string name="api_exception">Произошла ошибка на сервере!</string>
+	<string name="unknown_response_code_exception">Неизвестный код ответа!</string>
+	<string name="not_auth_exception">Вы не авторизованы!</string>
+	<string name="no_connection_exception">Проблемы с подключением к интернету!</string>
+</resources>

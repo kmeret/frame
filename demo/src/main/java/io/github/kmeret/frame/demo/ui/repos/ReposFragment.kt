@@ -1,4 +1,4 @@
-package io.github.kmeret.frame.demo.domain.repos
+package io.github.kmeret.frame.demo.ui.repos
 
 import android.view.View
 import io.github.kmeret.frame.android.base.BaseFragment

@@ -8,13 +8,13 @@
 	
 	<fragment
 		android:id="@+id/reposFragment"
-		android:name="io.github.kmeret.frame.demo.domain.repos.ReposFragment"
+		android:name="io.github.kmeret.frame.demo.ui.repos.ReposFragment"
 		android:label="ReposFragment"
 		/>
 	
 	<fragment
 		android:id="@+id/starsFragment"
-		android:name="io.github.kmeret.frame.demo.domain.stars.StarsFragment"
+		android:name="io.github.kmeret.frame.demo.ui.stars.StarsFragment"
 		android:label="StarsFragment"
 		/>
 	

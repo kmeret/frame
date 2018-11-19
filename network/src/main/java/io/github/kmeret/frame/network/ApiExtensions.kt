@@ -20,13 +20,13 @@ fun <T> Call<T>.request(onSuccess: (response: T) -> Unit) = enqueue(object : Cal
                 return
             }
             try {
-                throw ApiException(JSONObject(errorBody.string()).getString("message"))
+                throw ApiMessageException(JSONObject(errorBody.string()).getString("message"))
             } catch (ex: Exception) {
                 handleServerError(response.code())
             }
         }
 
-        val body = response.body() ?: throw ApiException()
+        val body = response.body() ?: throw ApiException
 
         onSuccess.invoke(body)
     }

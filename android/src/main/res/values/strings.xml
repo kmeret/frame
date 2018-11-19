@@ -1,3 +1,10 @@
 <resources>
-    <string name="app_name">Android</string>
+	<string name="app_name">Android</string>
+	
+	<!-- Exceptions -->
+	<string name="network_exception">Network problems!</string>
+	<string name="api_exception">Server error occurred!</string>
+	<string name="unknown_response_code_exception">Unknown response code!</string>
+	<string name="not_auth_exception">You are not auth!</string>
+	<string name="no_connection_exception">Problems with network connection!</string>
 </resources>

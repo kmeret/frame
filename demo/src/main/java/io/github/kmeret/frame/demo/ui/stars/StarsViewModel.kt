@@ -1,4 +1,4 @@
-package io.github.kmeret.frame.demo.domain.stars
+package io.github.kmeret.frame.demo.ui.stars
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Transformations
@@ -8,18 +8,22 @@ import io.github.kmeret.frame.demo.domain.entity.Repo
 import io.github.kmeret.frame.demo.github.GithubConfig
 import io.github.kmeret.frame.demo.github.GithubService
 import io.github.kmeret.frame.demo.github.model.GithubRepo
+import io.github.kmeret.frame.lifecycle.DataEvent
 
-class StarsViewModel(githubService: GithubService) : ViewModel() {
+class StarsViewModel(private val githubService: GithubService) : ViewModel() {
 
     private val useCase = NetworkLiveUseCase<List<GithubRepo>>()
 
-    private val repoList = Transformations.map(useCase.data) { githubRepoList ->
-        githubRepoList.map { it.map() }
-    }
-
-    fun getRepoList(): LiveData<List<Repo>> = repoList
+    val repoList: LiveData<List<Repo>> = Transformations.map(useCase.data) { githubRepoList -> githubRepoList.map { it.map() } }
+    val loading: DataEvent<Boolean> = useCase.loading
+    val empty: DataEvent<Boolean> = useCase.empty
+    val error: DataEvent<Exception> = useCase.error
 
     init {
+        requestStarredList()
+    }
+
+    fun requestStarredList() {
         useCase.execute(githubService.getStarredRepoListByUsername(GithubConfig.userName))
     }
 

@@ -1,8 +1,16 @@
 <resources>
-    <string name="app_name">Demo</string>
-	<string name="stars">Stars</string>
-	<string name="profile">Profile</string>
-	<string name="repos">Repos</string>
-	<string name="followers">Followers</string>
-	<string name="following">Following</string>
+    <string name="app_name"
+            translatable="false">Demo</string>
+	<string name="stars"
+	        translatable="false">Stars</string>
+	<string name="profile"
+	        translatable="false">Profile</string>
+	<string name="repos"
+	        translatable="false">Repos</string>
+	<string name="followers"
+	        translatable="false">Followers</string>
+	<string name="following"
+	        translatable="false">Following</string>
+	<string name="starred_repos_not_found"
+	        translatable="false">This user doesn\'t have any starred repositories yet.</string>
 </resources>

@@ -26,7 +26,7 @@ class NetworkLiveUseCase<Response> : LiveUseCase<Call<Response>, Response>() {
                         return
                     }
                     try {
-                        throw ApiException(JSONObject(errorBody.string()).getString("message"))
+                        throw ApiMessageException(JSONObject(errorBody.string()).getString("message"))
                     } catch (ex: Exception) {
                         handleServerError(response.code())
                     }
@@ -35,15 +35,16 @@ class NetworkLiveUseCase<Response> : LiveUseCase<Call<Response>, Response>() {
                 val body = response.body()
 
                 if (body == null) {
-                    empty.invoke()
+                    empty.value = true
                     return
                 }
 
                 if (body is List<*> && body.isEmpty()) {
-                    empty.invoke()
+                    empty.value = true
                     return
                 }
 
+                empty.value = false
                 data.value = body
             }
 
