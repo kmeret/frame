@@ -7,15 +7,22 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
+fun ImageView.byUrl(url: String) = Picasso.get().load(url).into(this)
+
 fun <T> Call<T>.request(onSuccess: (response: T) -> Unit) = enqueue(object : Callback<T> {
 
     override fun onResponse(call: Call<T>?, response: Response<T>) {
+
         if (!response.isSuccessful) {
-            val errorBody = response.errorBody()?.string() ?: return
+            val errorBody = response.errorBody()
+            if (errorBody == null) {
+                handleServerError(response.code())
+                return
+            }
             try {
-                throw ApiException(JSONObject(errorBody).getString("message"))
+                throw ApiException(JSONObject(errorBody.string()).getString("message"))
             } catch (ex: Exception) {
-                throw ApiException()
+                handleServerError(response.code())
             }
         }
 
@@ -25,9 +32,15 @@ fun <T> Call<T>.request(onSuccess: (response: T) -> Unit) = enqueue(object : Cal
     }
 
     override fun onFailure(call: Call<T>?, t: Throwable) {
-        val error = t.message ?: throw ApiException()
-        throw ApiException(error)
+        handleServerError(999)
     }
-})
 
-fun ImageView.byUrl(url: String) = Picasso.get().load(url).into(this)
+    private fun handleServerError(responseCode: Int) {
+        throw when(responseCode) {
+            401 -> NotAuthException
+            999 -> NoConnectionException
+            else -> UnknownResponseCodeException
+        }
+    }
+
+})
