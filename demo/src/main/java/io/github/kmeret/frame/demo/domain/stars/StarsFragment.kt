@@ -13,7 +13,6 @@ class StarsFragment : ViewModelFragment<StarsViewModel>() {
 
     override val layoutResId = R.layout.fragment_stars
     override val viewModel: StarsViewModel by viewModel()
-    override val viewModelClass = StarsViewModel::class.java
 
     private lateinit var repoListAdapter: RecyclerAdapter<Repo>
 

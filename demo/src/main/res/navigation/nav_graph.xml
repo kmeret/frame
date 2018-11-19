@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:id="@+id/nav_graph"
+	app:startDestination="@id/starsFragment"
+	>
+	
+	<fragment
+		android:id="@+id/reposFragment"
+		android:name="io.github.kmeret.frame.demo.domain.repos.ReposFragment"
+		android:label="ReposFragment"
+		/>
+	
+	<fragment
+		android:id="@+id/starsFragment"
+		android:name="io.github.kmeret.frame.demo.domain.stars.StarsFragment"
+		android:label="StarsFragment"
+		/>
+	
+</navigation>

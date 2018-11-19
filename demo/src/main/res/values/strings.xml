@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Demo</string>
+	<string name="stars">Stars</string>
+	<string name="profile">Profile</string>
+	<string name="repos">Repos</string>
+	<string name="followers">Followers</string>
+	<string name="following">Following</string>
 </resources>

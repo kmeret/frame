@@ -1,18 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".navigation.NavActivity"
-    >
-	
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical"
+	tools:context=".navigation.NavActivity"
+	>
+
 	<fragment
-		android:id="@+id/fragment"
+		android:id="@+id/navHostFragment"
+		android:name="androidx.navigation.fragment.NavHostFragment"
 		android:layout_width="match_parent"
-		android:layout_height="match_parent"
-		android:name="io.github.kmeret.frame.demo.domain.stars.StarsFragment"
+		android:layout_height="0dp"
+		android:layout_weight="1"
+		app:defaultNavHost="true"
+		app:navGraph="@navigation/nav_graph"
+		/>
+	
+	<com.google.android.material.bottomnavigation.BottomNavigationView
+		android:id="@+id/bottomNavBar"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:background="@color/black"
+		app:itemIconTint="@color/white"
+		app:itemTextColor="@color/white"
+		app:labelVisibilityMode="labeled"
+		app:menu="@menu/bottom_nav_menu"
 		/>
 
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

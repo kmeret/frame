@@ -47,8 +47,6 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-//    implementation 'androidx.multidex:multidex:2.0.0'
-
     implementation project(":network")
     implementation project(":android")
     implementation project(":lifecycle")
@@ -63,6 +61,9 @@ dependencies {
 
     implementation "androidx.room:room-runtime:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
+
+    implementation "android.arch.navigation:navigation-fragment-ktx:$nav_version"
+    implementation "android.arch.navigation:navigation-ui-ktx:$nav_version"
 
     implementation "androidx.appcompat:appcompat:$androidx_version"
     implementation "androidx.constraintlayout:constraintlayout:$constraint_version"
