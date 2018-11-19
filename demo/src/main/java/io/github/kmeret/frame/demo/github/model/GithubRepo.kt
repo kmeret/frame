@@ -14,6 +14,7 @@ data class GithubRepo(
         val starsCount: Int,
         @SerializedName("forks_count")
         val forksCount: Int,
+        val topics: List<String>,
         @SerializedName("updated_at")
         val updatedAt: String
 ) {
