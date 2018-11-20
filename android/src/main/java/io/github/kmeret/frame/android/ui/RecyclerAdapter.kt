@@ -23,7 +23,7 @@ class RecyclerAdapter<T : RecyclerAdapter.Identifiable>(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
-            ItemViewHolder(inflate(parent))
+            ItemViewHolder(parent.inflate(templateResId))
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) =
             onBindItem.invoke(list[position], holder.rootView)
@@ -39,7 +39,5 @@ class RecyclerAdapter<T : RecyclerAdapter.Identifiable>(
         this.list.addAll(list)
         notifyDataSetChanged()
     }
-
-    private fun inflate(parent: ViewGroup) = parent.inflate(templateResId)
 
 }

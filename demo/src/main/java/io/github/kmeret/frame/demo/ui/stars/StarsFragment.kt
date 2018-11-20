@@ -12,7 +12,7 @@ import io.github.kmeret.frame.demo.ui.ExceptionHandler
 import io.github.kmeret.frame.lifecycle.ViewModelFragment
 import kotlinx.android.synthetic.main.fragment_stars.*
 import kotlinx.android.synthetic.main.fragment_stars.view.*
-import kotlinx.android.synthetic.main.template_repo.view.*
+import kotlinx.android.synthetic.main.template_repo_starred.view.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class StarsFragment : ViewModelFragment<StarsViewModel>() {
@@ -23,7 +23,7 @@ class StarsFragment : ViewModelFragment<StarsViewModel>() {
     private lateinit var repoListAdapter: RecyclerAdapter<Repo>
 
     override fun initView(rootView: View) {
-        repoListAdapter = RecyclerAdapter(R.layout.template_repo) { repo, repoRootView ->
+        repoListAdapter = RecyclerAdapter(R.layout.template_repo_starred) { repo, repoRootView ->
             repoRootView.also {
                 it.repoTitleView.text = repo.fullName
                 it.repoDescriptionView.text = repo.description

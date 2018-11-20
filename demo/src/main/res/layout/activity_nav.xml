@@ -27,6 +27,7 @@
 		app:itemIconTint="@color/white"
 		app:itemTextColor="@color/white"
 		app:labelVisibilityMode="labeled"
+		app:itemTextAppearanceActive="@color/white"
 		app:menu="@menu/bottom_nav_menu"
 		/>
 
