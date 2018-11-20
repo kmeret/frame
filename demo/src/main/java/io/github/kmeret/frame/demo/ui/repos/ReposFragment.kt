@@ -28,7 +28,6 @@ class ReposFragment : Fragment() {
 
         reposAdapter = ReposAdapter()
         reposBinding.root.repoListView.apply {
-            setHasFixedSize(false)
             layoutManager = LinearLayoutManager(requireContext())
             adapter = reposAdapter
         }

@@ -15,7 +15,7 @@
 	<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
-		app:refreshing="@{viewModel.loading}"
+		app:refreshing="@{ safeUnbox(viewModel.loading) }"
 		app:onRefreshListener="@{ () -> viewModel.requestRepoList() }"
 	>
 		
@@ -30,7 +30,7 @@
 				android:layout_height="wrap_content"
 				android:layout_marginStart="16dp"
 				android:layout_marginEnd="16dp"
-				android:visibility="@{viewModel.empty ? View.GONE : View.VISIBLE }"
+				android:visibility="@{ safeUnbox(viewModel.empty) ? View.GONE : View.VISIBLE }"
 				/>
 			
 			<TextView
@@ -38,7 +38,7 @@
 				android:layout_height="wrap_content"
 				android:text="@string/starred_repos_not_found"
 				android:layout_gravity="center"
-				android:visibility="@{viewModel.empty ? View.VISIBLE : View.GONE}"
+				android:visibility="@{ safeUnbox(viewModel.empty) ? View.VISIBLE : View.GONE}"
 				/>
 		
 		</FrameLayout>
