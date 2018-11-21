@@ -18,13 +18,13 @@
 		>
 		
 		<androidx.appcompat.widget.AppCompatTextView
-			android:id="@+id/repoTitleView"
+			android:id="@+id/repoNameView"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_marginTop="16dp"
 			android:textSize="16sp"
 			android:textColor="@color/blueDark"
-			android:text="@{item.fullName}"
+			android:text="@{item.name}"
 			app:layout_constraintTop_toTopOf="parent"
 			app:layout_constraintStart_toStartOf="parent"
 			/>
@@ -36,8 +36,17 @@
 			android:layout_marginTop="8dp"
 			android:textSize="12sp"
 			android:text="@{item.description}"
-			app:layout_constraintTop_toBottomOf="@id/repoTitleView"
-			app:layout_constraintStart_toStartOf="@id/repoTitleView"
+			app:layout_constraintTop_toBottomOf="@id/repoNameView"
+			app:layout_constraintStart_toStartOf="@id/repoNameView"
+			/>
+		
+		<com.google.android.material.chip.ChipGroup
+			android:id="@+id/repoTopicListView"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			app:layout_constraintTop_toBottomOf="@id/repoDescriptionView"
+			app:layout_constraintStart_toStartOf="@id/repoDescriptionView"
+			app:chipList="@{ item.topics }"
 			/>
 		
 		<androidx.appcompat.widget.AppCompatTextView
@@ -48,31 +57,8 @@
 			android:layout_marginStart="8dp"
 			android:textSize="14sp"
 			android:text="@{item.language}"
-			app:layout_constraintTop_toBottomOf="@id/repoDescriptionView"
-			app:layout_constraintStart_toStartOf="@id/repoDescriptionView"
-			/>
-		
-		
-		<TextView
-			android:id="@+id/repoStarsView"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_marginStart="16dp"
-			android:textSize="14sp"
-			android:drawableStart="@drawable/ic_star"
-			app:layout_constraintStart_toEndOf="@id/repoLanguageView"
-			app:layout_constraintBaseline_toBaselineOf="@id/repoLanguageView"
-			/>
-		
-		<TextView
-			android:id="@+id/repoForksView"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_marginStart="16dp"
-			android:textSize="14sp"
-			android:drawableStart="@drawable/ic_fork"
-			app:layout_constraintStart_toEndOf="@id/repoStarsView"
-			app:layout_constraintBaseline_toBaselineOf="@id/repoStarsView"
+			app:layout_constraintTop_toBottomOf="@id/repoTopicListView"
+			app:layout_constraintStart_toStartOf="@id/repoTopicListView"
 			/>
 		
 		<TextView
@@ -82,8 +68,8 @@
 			android:layout_marginStart="16dp"
 			android:textSize="14sp"
 			android:text="@{item.updatedAt}"
-			app:layout_constraintStart_toEndOf="@id/repoForksView"
-			app:layout_constraintBaseline_toBaselineOf="@id/repoForksView"
+			app:layout_constraintStart_toEndOf="@id/repoLanguageView"
+			app:layout_constraintBaseline_toBaselineOf="@id/repoLanguageView"
 			app:layout_constraintBottom_toBottomOf="parent"
 			/>
 	

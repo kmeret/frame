@@ -14,6 +14,7 @@ import io.github.kmeret.frame.demo.databinding.TemplateRepoBinding
 import io.github.kmeret.frame.demo.domain.entity.Repo
 import io.github.kmeret.frame.lifecycle.observe
 import kotlinx.android.synthetic.main.fragment_repos.view.*
+import kotlinx.android.synthetic.main.template_repo.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class ReposFragment : Fragment() {
@@ -27,6 +28,7 @@ class ReposFragment : Fragment() {
         val reposBinding: FragmentReposBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_repos, container, false)
         reposBinding.setLifecycleOwner(viewLifecycleOwner)
         reposBinding.viewModel = viewModel
+
         return reposBinding.root
     }
 
