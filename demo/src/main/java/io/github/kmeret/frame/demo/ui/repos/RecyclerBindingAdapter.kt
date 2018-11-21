@@ -7,13 +7,13 @@ import androidx.databinding.ViewDataBinding
 import androidx.databinding.library.baseAdapters.BR
 import androidx.recyclerview.widget.RecyclerView
 
-class RecyclerBindingAdapter <Binding : ViewDataBinding, Item>(
+class RecyclerBindingAdapter <Binding : ViewDataBinding, Item : Any>(
         private val templateResId: Int
 ) : RecyclerView.Adapter<RecyclerBindingAdapter.ItemViewHolder<Binding, Item>>() {
 
     class ItemViewHolder <Binding : ViewDataBinding, Item> (private val binding: Binding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: Item) {
-            binding.setVariable(BR.viewModel, item) //TODO change to BR.item
+            binding.setVariable(BR.item, item)
             binding.executePendingBindings()
         }
     }
