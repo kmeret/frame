@@ -25,6 +25,7 @@
 		/>
 	
 	<item
+		android:id="@id/followingFragment"
 		android:title="@string/following"
 		android:icon="@drawable/ic_right"
 		/>

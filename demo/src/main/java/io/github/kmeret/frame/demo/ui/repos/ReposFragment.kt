@@ -28,7 +28,6 @@ class ReposFragment : Fragment() {
         val reposBinding: FragmentReposBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_repos, container, false)
         reposBinding.setLifecycleOwner(viewLifecycleOwner)
         reposBinding.viewModel = viewModel
-
         return reposBinding.root
     }
 

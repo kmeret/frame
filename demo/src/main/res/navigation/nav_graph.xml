@@ -18,4 +18,10 @@
 		android:label="StarsFragment"
 		/>
 	
+	<fragment
+		android:id="@+id/followingFragment"
+		android:name="io.github.kmeret.frame.demo.ui.following.FollowingFragment"
+		android:label="FollowingFragment"
+		/>
+	
 </navigation>
