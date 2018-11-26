@@ -23,6 +23,12 @@ interface GithubService {
     fun getFollowerList(@Path("userName") userName: String): Call<List<GithubUser>>
 
     @GET("/users/{userName}/following")
-    fun getFollowingList(@Path("userName") userName: String): Flowable<List<GithubUser>>
+    fun getFollowingList(@Path("userName") userName: String): Call<List<GithubUser>>
+
+    @GET("/users/{userName}/followers")
+    fun getFollowerListRx(@Path("userName") userName: String): Flowable<List<GithubUser>>
+
+    @GET("/users/{userName}/following")
+    fun getFollowingListRx(@Path("userName") userName: String): Flowable<List<GithubUser>>
 
 }

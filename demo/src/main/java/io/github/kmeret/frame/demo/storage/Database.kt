@@ -4,13 +4,13 @@ import androidx.room.Database
 import androidx.room.RoomDatabase
 import io.github.kmeret.frame.demo.storage.dao.RepoDao
 import io.github.kmeret.frame.demo.storage.dao.UserDao
-import io.github.kmeret.frame.demo.storage.entity.Repo
-import io.github.kmeret.frame.demo.storage.entity.User
+import io.github.kmeret.frame.demo.storage.entity.RoomRepo
+import io.github.kmeret.frame.demo.storage.entity.RoomUser
 
 @Database(
         entities = [
-            User::class,
-            Repo::class
+            RoomUser::class,
+            RoomRepo::class
         ],
         version = 1,
         exportSchema = false

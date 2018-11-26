@@ -7,12 +7,13 @@ import io.github.kmeret.frame.demo.R
 import io.github.kmeret.frame.demo.domain.entity.User
 import io.github.kmeret.frame.lifecycle.ViewModelFragment
 import kotlinx.android.synthetic.main.fragment_following.view.*
+import org.koin.android.viewmodel.ext.android.sharedViewModel
 import org.koin.android.viewmodel.ext.android.viewModel
 
-class FollowingFragment : ViewModelFragment<FollowingViewModel>() {
+class FollowingFragment : ViewModelFragment<FollowViewModel>() {
 
     override val layoutResId = R.layout.fragment_following
-    override val viewModel: FollowingViewModel by viewModel()
+    override val viewModel: FollowViewModel by sharedViewModel()
 
     override fun initView(rootView: View) {
         rootView.apply {

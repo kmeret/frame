@@ -7,14 +7,14 @@ import io.github.kmeret.frame.demo.storage.base.Identifiable
 
 @Entity(foreignKeys = [
     ForeignKey(
-            entity = User::class,
+            entity = RoomUser::class,
             parentColumns = arrayOf("id"),
             childColumns = arrayOf("userId"),
             onDelete = ForeignKey.CASCADE,
             onUpdate = ForeignKey.CASCADE
     )
 ], inheritSuperIndices = true)
-data class Repo(
+data class RoomRepo(
         val name: String,
         val description: String,
         val starsCount: Int,

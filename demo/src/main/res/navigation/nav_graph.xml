@@ -7,21 +7,28 @@
 	>
 	
 	<fragment
+		android:id="@+id/profileFragment"
+		android:name="io.github.kmeret.frame.demo.ui.profile.ProfileFragment"
+		/>
+	
+	<fragment
 		android:id="@+id/reposFragment"
 		android:name="io.github.kmeret.frame.demo.ui.repos.ReposFragment"
-		android:label="ReposFragment"
 		/>
 	
 	<fragment
 		android:id="@+id/starsFragment"
 		android:name="io.github.kmeret.frame.demo.ui.stars.StarsFragment"
-		android:label="StarsFragment"
+		/>
+	
+	<fragment
+		android:id="@+id/followersFragment"
+		android:name="io.github.kmeret.frame.demo.ui.following.FollowersFragment"
 		/>
 	
 	<fragment
 		android:id="@+id/followingFragment"
 		android:name="io.github.kmeret.frame.demo.ui.following.FollowingFragment"
-		android:label="FollowingFragment"
 		/>
 	
 </navigation>
