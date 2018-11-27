@@ -8,7 +8,6 @@ import io.github.kmeret.frame.demo.domain.entity.Repo
 import io.github.kmeret.frame.demo.github.GithubConfig
 import io.github.kmeret.frame.demo.github.GithubService
 import io.github.kmeret.frame.demo.github.model.GithubRepo
-import io.github.kmeret.frame.lifecycle.DataEvent
 
 class StarsViewModel(private val githubService: GithubService) : ViewModel() {
 
@@ -16,8 +15,8 @@ class StarsViewModel(private val githubService: GithubService) : ViewModel() {
 
     val repoList: LiveData<List<Repo>> = Transformations.map(useCase.data) { githubRepoList -> githubRepoList.map { it.map() } }
     val loading: LiveData<Boolean> = useCase.loading
-    val empty: DataEvent<Boolean> = useCase.empty
-    val error: DataEvent<Exception> = useCase.error
+    val empty: LiveData<Boolean> = useCase.empty
+    val error: LiveData<Exception> = useCase.error
 
     init {
         requestStarredList()

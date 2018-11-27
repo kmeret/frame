@@ -1,6 +1,5 @@
 package io.github.kmeret.frame.network
 
-import com.squareup.picasso.Picasso
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -23,7 +22,6 @@ class ApiFactory<T> {
             clientBuilder.addInterceptor(HttpLoggingInterceptor().apply {
                 level = HttpLoggingInterceptor.Level.BODY
             })
-            Picasso.get().isLoggingEnabled = true
         }
 
         return retrofitBuilder

@@ -20,7 +20,7 @@ class ReposViewModel(private val githubService: GithubService) : ViewModel() {
     val repoList: LiveData<List<Repo>> = Transformations.map(useCase.data) { githubRepoList -> githubRepoList.map { it.map() } }
     val loading: LiveData<Boolean> = useCase.loading
     val empty: LiveData<Boolean> = useCase.empty
-    val error: DataEvent<Exception> = useCase.error
+    val error: LiveData<Exception> = useCase.error
 
     init {
         requestRepoList()

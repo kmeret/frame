@@ -31,6 +31,8 @@ class StarsFragment : ViewModelFragment<StarsViewModel>() {
                 it.repoStarsView.text = repo.starsCount.toString()
                 it.repoForksView.text = repo.forksCount.toString()
                 it.repoUpdatedView.text = repo.updatedAt
+
+                if (repo.description.isEmpty()) it.repoDescriptionView.visible(false)
             }
         }
         rootView.apply {

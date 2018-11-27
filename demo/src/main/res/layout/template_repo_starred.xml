@@ -33,10 +33,11 @@
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:layout_marginTop="8dp"
-		android:layout_marginStart="8dp"
 		android:textSize="14sp"
 		app:layout_constraintTop_toBottomOf="@id/repoDescriptionView"
-		app:layout_constraintStart_toStartOf="@id/repoDescriptionView"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintEnd_toStartOf="@+id/repoStarsView"
+		app:layout_constraintHorizontal_chainStyle="spread_inside"
 		/>
 	
 	
@@ -44,33 +45,36 @@
 		android:id="@+id/repoStarsView"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:layout_marginStart="16dp"
+		android:layout_marginStart="8dp"
 		android:textSize="14sp"
 		android:drawableStart="@drawable/ic_star"
-		app:layout_constraintStart_toEndOf="@id/repoLanguageView"
+		app:layout_constraintStart_toEndOf="@+id/repoLanguageView"
 		app:layout_constraintBaseline_toBaselineOf="@id/repoLanguageView"
+		app:layout_constraintEnd_toStartOf="@+id/repoForksView"
 		/>
 	
 	<TextView
 		android:id="@+id/repoForksView"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:layout_marginStart="16dp"
+		android:layout_marginStart="8dp"
 		android:textSize="14sp"
 		android:drawableStart="@drawable/ic_fork"
-		app:layout_constraintStart_toEndOf="@id/repoStarsView"
+		app:layout_constraintStart_toEndOf="@+id/repoStarsView"
 		app:layout_constraintBaseline_toBaselineOf="@id/repoStarsView"
+		app:layout_constraintEnd_toStartOf="@+id/repoUpdatedView"
 		/>
 	
 	<TextView
 		android:id="@+id/repoUpdatedView"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:layout_marginStart="16dp"
+		android:layout_marginStart="8dp"
 		android:textSize="14sp"
-		app:layout_constraintStart_toEndOf="@id/repoForksView"
+		app:layout_constraintStart_toEndOf="@+id/repoForksView"
 		app:layout_constraintBaseline_toBaselineOf="@id/repoForksView"
 		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
 		/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

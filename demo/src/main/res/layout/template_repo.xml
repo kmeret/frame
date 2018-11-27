@@ -5,6 +5,8 @@
 	>
 	
 	<data>
+		<import type="android.view.View"/>
+		<import type="android.text.TextUtils"/>
 		<variable
 			name="item"
 			type="io.github.kmeret.frame.demo.domain.entity.Repo"
@@ -36,6 +38,7 @@
 			android:layout_marginTop="8dp"
 			android:textSize="12sp"
 			android:text="@{item.description}"
+			android:visibility="@{TextUtils.isEmpty(item.description) ? View.GONE : View.VISIBLE}"
 			app:layout_constraintTop_toBottomOf="@id/repoNameView"
 			app:layout_constraintStart_toStartOf="@id/repoNameView"
 			/>
@@ -54,11 +57,12 @@
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_marginTop="8dp"
-			android:layout_marginStart="8dp"
 			android:textSize="14sp"
 			android:text="@{item.language}"
 			app:layout_constraintTop_toBottomOf="@id/repoTopicListView"
-			app:layout_constraintStart_toStartOf="@id/repoTopicListView"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintEnd_toStartOf="@+id/repoUpdatedView"
+			app:layout_constraintHorizontal_chainStyle="spread_inside"
 			/>
 		
 		<TextView
@@ -68,9 +72,10 @@
 			android:layout_marginStart="16dp"
 			android:textSize="14sp"
 			android:text="@{item.updatedAt}"
-			app:layout_constraintStart_toEndOf="@id/repoLanguageView"
+			app:layout_constraintStart_toEndOf="@+id/repoLanguageView"
 			app:layout_constraintBaseline_toBaselineOf="@id/repoLanguageView"
 			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintEnd_toEndOf="parent"
 			/>
 	
 	</androidx.constraintlayout.widget.ConstraintLayout>

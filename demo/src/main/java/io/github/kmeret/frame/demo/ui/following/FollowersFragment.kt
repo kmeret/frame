@@ -8,7 +8,6 @@ import org.koin.android.viewmodel.ext.android.sharedViewModel
 class FollowersFragment : ViewModelFragment<FollowViewModel>() {
 
     override val layoutResId = R.layout.fragment_followers
-
     override val viewModel: FollowViewModel by sharedViewModel()
 
     override fun initView(rootView: View) {

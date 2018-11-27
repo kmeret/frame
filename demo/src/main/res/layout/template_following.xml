@@ -3,78 +3,29 @@
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
 	android:layout_width="match_parent"
-	android:layout_height="match_parent"
+	android:layout_height="wrap_content"
 	>
 	
 	<androidx.appcompat.widget.AppCompatImageView
 		android:id="@+id/userAvatarView"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_marginTop="16dp"
+		android:layout_width="50dp"
+		android:layout_height="50dp"
+		android:layout_margin="16dp"
 		app:layout_constraintTop_toTopOf="parent"
 		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintBottom_toBottomOf="parent"
 		/>
 	
 	<androidx.appcompat.widget.AppCompatTextView
 		android:id="@+id/userFullNameView"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:layout_marginStart="8dp"
+		android:layout_marginStart="16dp"
 		android:textSize="16sp"
 		android:textColor="@color/black"
 		app:layout_constraintStart_toEndOf="@id/userAvatarView"
 		app:layout_constraintTop_toTopOf="@id/userAvatarView"
-		/>
-	
-	<androidx.appcompat.widget.AppCompatTextView
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_marginStart="8dp"
-		android:textSize="14sp"
-		app:layout_constraintStart_toStartOf="@id/userFullNameView"
-		app:layout_constraintBaseline_toBaselineOf="@id/userFullNameView"
-		/>
-	
-	<androidx.appcompat.widget.AppCompatTextView
-		android:id="@+id/userBioView"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_marginTop="8dp"
-		android:textSize="12sp"
-		app:layout_constraintStart_toStartOf="@id/userFullNameView"
-		app:layout_constraintTop_toBottomOf="@id/userFullNameView"
-		/>
-	
-	<androidx.appcompat.widget.AppCompatTextView
-		android:id="@+id/userCompanyView"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_marginTop="8dp"
-		android:textSize="12sp"
-		android:drawableStart="@drawable/ic_people"
-		app:layout_constraintTop_toBottomOf="@id/userBioView"
-		app:layout_constraintStart_toStartOf="@id/userBioView"
-		/>
-	
-	<androidx.appcompat.widget.AppCompatTextView
-		android:id="@+id/userLocationView"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_marginStart="8dp"
-		android:textSize="12sp"
-		android:drawableStart="@drawable/ic_location"
-		app:layout_constraintStart_toEndOf="@id/userCompanyView"
-		app:layout_constraintBaseline_toBaselineOf="@id/userCompanyView"
-		/>
-	
-	<androidx.constraintlayout.widget.Barrier
-		android:id="@+id/userBottomBarrier"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_marginBottom="16dp"
-		app:barrierDirection="bottom"
-		app:layout_constraintBottom_toBottomOf="parent"
-		app:constraint_referenced_ids="userAvatarView, userCompanyView, userLocationView"
+		app:layout_constraintBottom_toBottomOf="@id/userAvatarView"
 		/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
