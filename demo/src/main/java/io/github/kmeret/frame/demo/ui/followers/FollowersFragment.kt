@@ -1,4 +1,4 @@
-package io.github.kmeret.frame.demo.ui.following
+package io.github.kmeret.frame.demo.ui.followers
 
 import android.view.View
 import android.widget.LinearLayout
@@ -11,15 +11,15 @@ import io.github.kmeret.frame.demo.domain.entity.User
 import io.github.kmeret.frame.demo.ui.ExceptionHandler
 import io.github.kmeret.frame.lifecycle.ViewModelFragment
 import io.github.kmeret.frame.network.loadByUrl
-import kotlinx.android.synthetic.main.fragment_following.*
-import kotlinx.android.synthetic.main.fragment_following.view.*
+import kotlinx.android.synthetic.main.fragment_followers.*
+import kotlinx.android.synthetic.main.fragment_followers.view.*
 import kotlinx.android.synthetic.main.template_user.view.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
-class FollowingFragment : ViewModelFragment<FollowingViewModel>() {
+class FollowersFragment : ViewModelFragment<FollowersViewModel>() {
 
-    override val layoutResId = R.layout.fragment_following
-    override val viewModel: FollowingViewModel by viewModel()
+    override val layoutResId = R.layout.fragment_followers
+    override val viewModel: FollowersViewModel by viewModel()
 
     private lateinit var userAdapter: RecyclerAdapter<User>
 
@@ -32,11 +32,11 @@ class FollowingFragment : ViewModelFragment<FollowingViewModel>() {
         }
 
         rootView.apply {
-            followingListView.apply {
+            followersListView.apply {
                 attachAdapter(userAdapter)
                 addItemDecoration(DividerItemDecoration(requireContext(), LinearLayout.VERTICAL))
             }
-            followingRefreshLayout.setOnRefreshListener { viewModel.requestUserList() }
+            followersRefreshLayout.setOnRefreshListener { viewModel.requestUserListRx(viewLifecycleOwner) }
         }
     }
 
@@ -44,17 +44,16 @@ class FollowingFragment : ViewModelFragment<FollowingViewModel>() {
         viewModel.getUserList().observe { userAdapter.updateList(it) }
         viewModel.getError().observe { ExceptionHandler.handle(it, requireContext()) }
         viewModel.isEmpty().observe { isEmpty ->
-            followingEmptyView.visible(isEmpty)
-            followingListView.visible(!isEmpty)
+            followersEmptyView.visible(isEmpty)
+            followersListView.visible(!isEmpty)
         }
         viewModel.isLoading().observe { isLoading ->
-            followingRefreshLayout.isRefreshing = isLoading
+            followersRefreshLayout.isRefreshing = isLoading
         }
     }
 
     override fun onResume() {
         super.onResume()
-        viewModel.requestUserList()
+        viewModel.requestUserListRx(viewLifecycleOwner)
     }
-
 }

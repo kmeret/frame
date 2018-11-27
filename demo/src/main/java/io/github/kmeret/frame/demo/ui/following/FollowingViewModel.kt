@@ -10,7 +10,7 @@ import io.reactivex.Flowable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
-class FollowViewModel(githubService: GithubService) : ViewModel() {
+class FollowingViewModel(githubService: GithubService) : ViewModel() {
 
     private val followingRx: Flowable<List<GithubUser>> =
             githubService.getFollowingListRx(GithubConfig.userName)
@@ -31,7 +31,7 @@ class FollowViewModel(githubService: GithubService) : ViewModel() {
                     .doOnComplete { loading.value = false }
 
     private val userList: MediatorLiveData<MutableList<GithubUser>> = MediatorLiveData()
-    private val error: DataEvent<Exception> = DataEvent()
+    private val error: DataEvent<Throwable> = DataEvent()
     private val loading: MutableLiveData<Boolean> = MutableLiveData()
     private val empty: DataEvent<Boolean> = DataEvent()
 
@@ -50,7 +50,7 @@ class FollowViewModel(githubService: GithubService) : ViewModel() {
     fun getUserList(): LiveData<List<User>> = Transformations.map(userList) { githubUserList ->
         githubUserList.map { it.map() }
     }
-    fun getError(): LiveData<Exception> = error
+    fun getError(): LiveData<Throwable> = error
     fun isLoading(): LiveData<Boolean> = loading
     fun isEmpty(): LiveData<Boolean> = empty
 

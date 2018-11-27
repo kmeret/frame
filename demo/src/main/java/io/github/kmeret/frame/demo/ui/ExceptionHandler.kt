@@ -7,7 +7,7 @@ import io.github.kmeret.frame.network.*
 
 object ExceptionHandler {
 
-    fun handle(exception: Exception, context: Context) {
+    fun handle(exception: Throwable, context: Context) {
         val message = when (exception) {
             is ApiMessageException -> exception.message ?: context.getString(R.string.api_exception)
             is ApiException -> context.getString(R.string.api_exception)

@@ -23,7 +23,7 @@
 	
 	<fragment
 		android:id="@+id/followersFragment"
-		android:name="io.github.kmeret.frame.demo.ui.following.FollowersFragment"
+		android:name="io.github.kmeret.frame.demo.ui.followers.FollowersFragment"
 		/>
 	
 	<fragment
