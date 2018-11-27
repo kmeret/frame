@@ -6,5 +6,5 @@ import androidx.room.PrimaryKey
 abstract class Identifiable {
     @PrimaryKey
     @ColumnInfo(index = true)
-    var id: Long = 0L
+    open var id: Long = 0L
 }

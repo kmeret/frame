@@ -9,7 +9,7 @@ import org.koin.android.viewmodel.ext.koin.viewModel
 import org.koin.dsl.module.module
 
 val viewModelModule = module {
-    viewModel { ProfileViewModel(get()) }
+    viewModel { ProfileViewModel(get(), get()) }
     viewModel { ReposViewModel(get()) }
     viewModel { StarsViewModel(get()) }
     viewModel { FollowersViewModel(get()) }

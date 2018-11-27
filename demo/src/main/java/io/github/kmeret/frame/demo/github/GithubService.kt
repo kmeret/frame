@@ -1,5 +1,6 @@
 package io.github.kmeret.frame.demo.github
 
+import io.github.kmeret.frame.demo.github.model.GithubProfile
 import io.github.kmeret.frame.demo.github.model.GithubRepo
 import io.github.kmeret.frame.demo.github.model.GithubUser
 import io.reactivex.Flowable
@@ -11,7 +12,7 @@ import retrofit2.http.Path
 interface GithubService {
 
     @GET("users/{userName}")
-    fun getProfile(@Path("userName") userName: String): Call<GithubUser>
+    fun getProfile(@Path("userName") userName: String): Call<GithubProfile>
 
     @GET("users/{userName}/starred")
     fun getStarredRepoList(@Path("userName") userName: String): Call<List<GithubRepo>>

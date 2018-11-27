@@ -16,4 +16,5 @@ val storageModule = module {
     }
     single { get<Database>().repoDao() }
     single { get<Database>().userDao() }
+    single { get<Database>().topicDao() }
 }
