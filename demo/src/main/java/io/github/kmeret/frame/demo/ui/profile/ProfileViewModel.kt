@@ -21,19 +21,15 @@ class ProfileViewModel(
         private val profileDao: ProfileDao
 ) : AndroidViewModel(application) {
 
-    private val profileIdKey = "PROFILE_ID"
-    private val settings = getApplication<App>().getSharedPreferences(BuildConfig.APPLICATION_ID, Context.MODE_PRIVATE)
+    private val sharedPrefs = getApplication<App>().getSharedPreferences(BuildConfig.APPLICATION_ID, Context.MODE_PRIVATE)
 
     private val requestProfileUseCase = NetworkLiveUseCase<GithubProfile>()
 
-    private val profileId: LiveData<Long> =  Transformations.map(requestProfileUseCase.data) { githubUser ->
-        profileDao.insert(githubUser.map())
-        with(settings.edit()) {
-            putLong(profileIdKey, githubUser.id)
-            apply()
-        }
-        githubUser.id
+    private val profileId: LiveData<Long> = Transformations.switchMap(requestProfileUseCase.data) { githubProfile ->
+        profileDao.insert(githubProfile.map())
+        ProfileIdLiveData(sharedPrefs).apply { save(githubProfile.id) }
     }
+
     private val roomProfile: LiveData<RoomProfile?> = Transformations.switchMap(profileId) { profileDao.getLiveById(it) }
 
     val profile: LiveData<Profile> = Transformations.map(roomProfile) { it?.map() }
