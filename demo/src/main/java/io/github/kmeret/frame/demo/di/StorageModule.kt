@@ -12,9 +12,9 @@ val storageModule = module {
                 androidApplication(),
                 Database::class.java,
                 BuildConfig.APPLICATION_ID
-        ).build()
+        ).allowMainThreadQueries().build()
     }
     single { get<Database>().repoDao() }
-    single { get<Database>().userDao() }
+    single { get<Database>().profileDao() }
     single { get<Database>().topicDao() }
 }

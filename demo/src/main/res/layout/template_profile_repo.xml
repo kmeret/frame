@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:id="@+id/repoProfileCardView"
+	android:layout_width="150dp"
+	android:layout_height="wrap_content"
+	android:layout_margin="8dp"
+	app:cardElevation="4dp"
+	>
+	
+	<androidx.constraintlayout.widget.ConstraintLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		>
+		
+		<androidx.appcompat.widget.AppCompatTextView
+			android:id="@+id/repoProfileNameView"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_margin="8dp"
+			android:textColor="@color/blueDark"
+			android:textSize="16sp"
+			android:textStyle="bold"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="parent"
+			/>
+		
+		<androidx.appcompat.widget.AppCompatTextView
+			android:id="@+id/repoProfileDescriptionView"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="8dp"
+			android:textSize="12sp"
+			app:layout_constraintTop_toBottomOf="@id/repoProfileNameView"
+			app:layout_constraintStart_toStartOf="@id/repoProfileNameView"
+			/>
+		
+		<androidx.appcompat.widget.AppCompatTextView
+			android:id="@+id/repoProfileLanguageView"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="8dp"
+			android:layout_marginBottom="8dp"
+			android:textSize="14sp"
+			app:layout_constraintTop_toBottomOf="@id/repoProfileDescriptionView"
+			app:layout_constraintStart_toStartOf="@id/repoProfileDescriptionView"
+			app:layout_constraintBottom_toBottomOf="parent"
+			/>
+		
+	</androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

@@ -1,7 +1,7 @@
 package io.github.kmeret.frame.demo.github.model
 
 import com.google.gson.annotations.SerializedName
-import io.github.kmeret.frame.demo.storage.entity.RoomUser
+import io.github.kmeret.frame.demo.storage.entity.RoomProfile
 
 data class GithubProfile(
         val id: Long,
@@ -13,5 +13,5 @@ data class GithubProfile(
         val company: String,
         val location: String
 ) {
-    fun map() = RoomUser(login, avatarUrl, name, bio, company, location)
+    fun map() = RoomProfile(id, login, avatarUrl, name, bio, company, location)
 }
