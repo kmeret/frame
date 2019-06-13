@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	>
+	
+	<data>
+		<import type="android.view.View"/>
+		<variable
+			name="viewModel"
+			type="io.github.kmeret.frame.ui.repos.ReposViewModel"
+			/>
+	</data>
+	
+	<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		app:refreshing="@{ safeUnbox(viewModel.loading) }"
+		app:onRefreshListener="@{ () -> viewModel.requestRepoList() }"
+	>
+		
+		<FrameLayout
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			>
+			
+			<androidx.recyclerview.widget.RecyclerView
+				android:id="@+id/repoListView"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginStart="16dp"
+				android:layout_marginEnd="16dp"
+				android:visibility="@{ safeUnbox(viewModel.empty) ? View.GONE : View.VISIBLE }"
+				app:adapter="@{ viewModel.adapter }"
+				app:list="@{ viewModel.repoList }"
+				/>
+			
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="@string/repos_not_found"
+				android:layout_gravity="center"
+				android:visibility="@{ safeUnbox(viewModel.empty) ? View.VISIBLE : View.GONE}"
+				/>
+		
+		</FrameLayout>
+	
+	</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+	
+</layout>

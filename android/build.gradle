@@ -1,6 +1,0 @@
-apply from: '../library.gradle'
-
-dependencies {
-    implementation "androidx.appcompat:appcompat:$androidx_version"
-    implementation "androidx.recyclerview:recyclerview:$recycler_version"
-}

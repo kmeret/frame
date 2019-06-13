@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	>
+	
+	<data>
+		<import type="android.view.View"/>
+		<import type="android.text.TextUtils"/>
+		<variable
+			name="item"
+			type="io.github.kmeret.frame.domain.entity.Repo"
+			/>
+	</data>
+	
+	<androidx.constraintlayout.widget.ConstraintLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:paddingBottom="16dp"
+		>
+		
+		<androidx.appcompat.widget.AppCompatTextView
+			android:id="@+id/repoNameView"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="16dp"
+			android:textSize="16sp"
+			android:textColor="@color/blueDark"
+			android:text="@{item.name}"
+			app:layout_constraintTop_toTopOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			/>
+		
+		<androidx.appcompat.widget.AppCompatTextView
+			android:id="@+id/repoDescriptionView"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="8dp"
+			android:textSize="12sp"
+			android:text="@{item.description}"
+			android:visibility="@{TextUtils.isEmpty(item.description) ? View.GONE : View.VISIBLE}"
+			app:layout_constraintTop_toBottomOf="@id/repoNameView"
+			app:layout_constraintStart_toStartOf="@id/repoNameView"
+			/>
+		
+		<com.google.android.material.chip.ChipGroup
+			android:id="@+id/repoTopicListView"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			app:layout_constraintTop_toBottomOf="@id/repoDescriptionView"
+			app:layout_constraintStart_toStartOf="@id/repoDescriptionView"
+			app:chipList="@{ item.topics }"
+			/>
+		
+		<androidx.appcompat.widget.AppCompatTextView
+			android:id="@+id/repoLanguageView"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="8dp"
+			android:textSize="14sp"
+			android:text="@{item.language}"
+			app:layout_constraintTop_toBottomOf="@id/repoTopicListView"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintEnd_toStartOf="@+id/repoUpdatedView"
+			app:layout_constraintHorizontal_chainStyle="spread_inside"
+			/>
+		
+		<TextView
+			android:id="@+id/repoUpdatedView"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginStart="16dp"
+			android:textSize="14sp"
+			android:text="@{item.updatedAt}"
+			app:layout_constraintStart_toEndOf="@+id/repoLanguageView"
+			app:layout_constraintBaseline_toBaselineOf="@id/repoLanguageView"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintEnd_toEndOf="parent"
+			/>
+	
+	</androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

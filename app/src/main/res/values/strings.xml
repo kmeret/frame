@@ -1,0 +1,33 @@
+<resources>
+	
+	<string name="app_name"
+	        translatable="false">Demo</string>
+	
+<!-- Exceptions -->
+	<string name="network_exception">Network problems!</string>
+	<string name="api_exception">Server error occurred!</string>
+	<string name="unknown_response_code_exception">Unknown response code!</string>
+	<string name="not_auth_exception">You are not auth!</string>
+	<string name="no_connection_exception">Problems with network connection!</string>
+	
+	<string name="profile"
+	        translatable="false">Profile</string>
+	<string name="repos"
+	        translatable="false">Repos</string>
+	<string name="stars"
+	        translatable="false">Stars</string>
+	<string name="followers"
+	        translatable="false">Followers</string>
+	<string name="following"
+	        translatable="false">Following</string>
+	
+	<string name="repos_not_found"
+	        translatable="false">This user doesn’t have any public repositories yet.</string>
+	<string name="starred_repos_not_found"
+	        translatable="false">This user doesn’t have any starred repositories yet.</string>
+	<string name="following_not_found"
+	        translatable="false">This user isn’t following anybody.</string>
+	<string name="profile_is_empty"
+	        translatable="false">Profile is empty!</string>
+
+</resources>

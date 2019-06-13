@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:id="@+id/nav_graph"
+	app:startDestination="@id/starsFragment"
+	>
+	
+	<fragment
+		android:id="@+id/profileFragment"
+		android:name="io.github.kmeret.frame.ui.profile.ProfileFragment"
+		/>
+	
+	<fragment
+		android:id="@+id/reposFragment"
+		android:name="io.github.kmeret.frame.ui.repos.ReposFragment"
+		/>
+	
+	<fragment
+		android:id="@+id/starsFragment"
+		android:name="io.github.kmeret.frame.ui.stars.StarsFragment"
+		/>
+	
+	<fragment
+		android:id="@+id/followersFragment"
+		android:name="io.github.kmeret.frame.ui.followers.FollowersFragment"
+		/>
+	
+	<fragment
+		android:id="@+id/followingFragment"
+		android:name="io.github.kmeret.frame.ui.following.FollowingFragment"
+		/>
+	
+</navigation>

@@ -1,5 +1,0 @@
-apply from: '../library.gradle'
-
-dependencies {
-    //todo add dependencies here
-}
