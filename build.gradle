@@ -1,44 +1,24 @@
 buildscript {
     ext {
-        domain_name = 'io.github.kmeret.frame'
-
-        min_sdk = 17
-        max_sdk = 28
-
-        version_number = 1
-        version_string = '0.0.1'
-
-        studio_version = '3.2.1'
-        kotlin_version = '1.3.10'
-        koin_version = '1.0.2'
-
+        kotlin_version = '1.3.31'
         retrofit_version = '2.4.0'
-        okhttp_version = '3.11.0'
         glide_version = '4.8.0'
-
-        room_version = '2.1.0-alpha02'
-        lifecycle_version = "2.0.0-rc01"
-        nav_version = '1.0.0-alpha07'
-
-        androidx_version = '1.0.2'
-        recycler_version = '1.0.0'
-        constraint_version = '1.1.3'
-        material_version = '1.1.0-alpha01'
+        lifecycle_version = "2.0.0"
+        nav_version = '1.0.0'
+        room_version = '2.1.0-rc01'
     }
     repositories {
-        mavenLocal()
         google()
         jcenter()
     }
     dependencies {
-        classpath "com.android.tools.build:gradle:${studio_version}"
+        classpath "com.android.tools.build:gradle:3.4.1"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
 
 allprojects {
     repositories {
-        mavenLocal()
         google()
         jcenter()
     }
