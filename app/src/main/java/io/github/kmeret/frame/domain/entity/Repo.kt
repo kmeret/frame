@@ -1,6 +1,6 @@
 package io.github.kmeret.frame.domain.entity
 
-import io.github.kmeret.frame.android.ui.RecyclerAdapter
+import io.github.kmeret.frame.infrastructure.presentation.base.list.ListItem
 
 data class Repo(
         override val id: Long,
@@ -12,4 +12,4 @@ data class Repo(
         val forksCount: Int,
         val topics: List<String>,
         val updatedAt: String
-) : RecyclerAdapter.Identifiable
+) : ListItem

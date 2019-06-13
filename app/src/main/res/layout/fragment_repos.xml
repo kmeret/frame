@@ -8,7 +8,7 @@
 		<import type="android.view.View"/>
 		<variable
 			name="viewModel"
-			type="io.github.kmeret.frame.ui.repos.ReposViewModel"
+			type="io.github.kmeret.frame.presentation.repos.ReposViewModel"
 			/>
 	</data>
 	

@@ -1,10 +1,10 @@
 package io.github.kmeret.frame.domain.cases
 
-import io.github.kmeret.frame.lifecycle.LiveUseCase
-import io.github.kmeret.frame.network.ApiMessageException
-import io.github.kmeret.frame.network.NoConnectionException
-import io.github.kmeret.frame.network.NotAuthException
-import io.github.kmeret.frame.network.UnknownResponseCodeException
+import io.github.kmeret.frame.infrastructure.data.network.ApiMessageException
+import io.github.kmeret.frame.infrastructure.data.network.NoConnectionException
+import io.github.kmeret.frame.infrastructure.data.network.NotAuthException
+import io.github.kmeret.frame.infrastructure.data.network.UnknownResponseCodeException
+import io.github.kmeret.frame.infrastructure.presentation.base.viewmodel.LiveUseCase
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback

@@ -1,9 +1,9 @@
 package io.github.kmeret.frame.domain.entity
 
-import io.github.kmeret.frame.android.ui.RecyclerAdapter
+import io.github.kmeret.frame.infrastructure.presentation.base.list.ListItem
 
 data class User(
         override val id: Long,
         val login: String,
         val avatarUrl: String
-) : RecyclerAdapter.Identifiable
+) : ListItem

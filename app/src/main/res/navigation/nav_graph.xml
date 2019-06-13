@@ -8,27 +8,27 @@
 	
 	<fragment
 		android:id="@+id/profileFragment"
-		android:name="io.github.kmeret.frame.ui.profile.ProfileFragment"
+		android:name="io.github.kmeret.frame.presentation.profile.ProfileFragment"
 		/>
 	
 	<fragment
 		android:id="@+id/reposFragment"
-		android:name="io.github.kmeret.frame.ui.repos.ReposFragment"
+		android:name="io.github.kmeret.frame.presentation.repos.ReposFragment"
 		/>
 	
 	<fragment
 		android:id="@+id/starsFragment"
-		android:name="io.github.kmeret.frame.ui.stars.StarsFragment"
+		android:name="io.github.kmeret.frame.presentation.stars.StarsFragment"
 		/>
 	
 	<fragment
 		android:id="@+id/followersFragment"
-		android:name="io.github.kmeret.frame.ui.followers.FollowersFragment"
+		android:name="io.github.kmeret.frame.presentation.followers.FollowersFragment"
 		/>
 	
 	<fragment
 		android:id="@+id/followingFragment"
-		android:name="io.github.kmeret.frame.ui.following.FollowingFragment"
+		android:name="io.github.kmeret.frame.presentation.following.FollowingFragment"
 		/>
 	
 </navigation>
