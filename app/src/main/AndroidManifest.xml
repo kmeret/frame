@@ -2,26 +2,38 @@
 <manifest
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:tools="http://schemas.android.com/tools"
-	package="io.github.kmeret.frame.demo"
+	package="io.github.kmeret.frame"
 	>
 	
 	<uses-permission android:name="android.permission.INTERNET"/>
 	
 	<application
 		android:name="io.github.kmeret.frame.application.App"
-		android:allowBackup="true"
-		android:fullBackupContent="@xml/backup_descriptor"
+		android:allowBackup="false"
 		android:label="@string/app_name"
-		android:supportsRtl="true"
+		android:supportsRtl="false"
 		android:theme="@style/AppTheme"
-		tools:ignore="GoogleAppIndexingWarning,MissingApplicationIcon"
+		android:usesCleartextTraffic="true"
+		tools:ignore="GoogleAppIndexingWarning,MissingApplicationIcon,UnusedAttribute"
 		>
-		<activity android:name="io.github.kmeret.frame.application.navigation.NavActivity">
+		
+		<activity-alias
+			android:name=".Launcher"
+			android:label="@string/app_name"
+			android:targetActivity=".infrastructure.application.navigation.NavActivity"
+			>
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN"/>
 				<category android:name="android.intent.category.LAUNCHER"/>
 			</intent-filter>
-		</activity>
+		</activity-alias>
+		
+		<activity
+			android:name=".infrastructure.application.navigation.NavActivity"
+			android:screenOrientation="portrait"
+			android:launchMode="singleTop"
+			/>
+	
 	</application>
 
 </manifest>

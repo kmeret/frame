@@ -4,8 +4,8 @@ import android.view.View
 import io.github.kmeret.frame.demo.R
 import io.github.kmeret.frame.domain.entity.Repo
 import io.github.kmeret.frame.infrastructure.data.network.loadByUrl
-import io.github.kmeret.frame.infrastructure.presentation.base.list.ListAdapter
-import io.github.kmeret.frame.infrastructure.presentation.base.viewmodel.ViewModelFragment
+import io.github.kmeret.frame.infrastructure.presentation.list.ListAdapter
+import io.github.kmeret.frame.infrastructure.application.lifecycle.VMFragment
 import io.github.kmeret.frame.infrastructure.presentation.extensions.attachGridAdapter
 import io.github.kmeret.frame.infrastructure.presentation.extensions.visible
 import io.github.kmeret.frame.presentation.ExceptionHandler
@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.fragment_profile.view.*
 import kotlinx.android.synthetic.main.template_profile_repo.view.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
-class ProfileFragment : ViewModelFragment<ProfileViewModel>() {
+class ProfileFragment : VMFragment<ProfileViewModel>() {
     override val layoutResId = R.layout.fragment_profile
     override val viewModel: ProfileViewModel by viewModel()
     private val reposViewModel: ReposViewModel by viewModel()

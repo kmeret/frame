@@ -1,6 +1,6 @@
 package io.github.kmeret.frame.domain.entity
 
-import io.github.kmeret.frame.infrastructure.presentation.base.list.ListItem
+import io.github.kmeret.frame.infrastructure.presentation.list.ListItem
 
 data class User(
         override val id: Long,

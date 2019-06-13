@@ -5,7 +5,7 @@ import io.github.kmeret.frame.data.github.GithubConfig
 import io.github.kmeret.frame.data.github.GithubService
 import io.github.kmeret.frame.data.github.model.GithubUser
 import io.github.kmeret.frame.domain.entity.User
-import io.github.kmeret.frame.infrastructure.presentation.base.viewmodel.DataEvent
+import io.github.kmeret.frame.infrastructure.application.lifecycle.DataEvent
 import io.reactivex.Flowable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers

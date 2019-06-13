@@ -5,8 +5,8 @@ import android.widget.LinearLayout
 import androidx.recyclerview.widget.DividerItemDecoration
 import io.github.kmeret.frame.demo.R
 import io.github.kmeret.frame.domain.entity.Repo
-import io.github.kmeret.frame.infrastructure.presentation.base.list.ListAdapter
-import io.github.kmeret.frame.infrastructure.presentation.base.viewmodel.ViewModelFragment
+import io.github.kmeret.frame.infrastructure.presentation.list.ListAdapter
+import io.github.kmeret.frame.infrastructure.application.lifecycle.VMFragment
 import io.github.kmeret.frame.infrastructure.presentation.extensions.attachAdapter
 import io.github.kmeret.frame.infrastructure.presentation.extensions.visible
 import io.github.kmeret.frame.presentation.ExceptionHandler
@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.fragment_stars.view.*
 import kotlinx.android.synthetic.main.template_repo_starred.view.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
-class StarsFragment : ViewModelFragment<StarsViewModel>() {
+class StarsFragment : VMFragment<StarsViewModel>() {
 
     override val layoutResId = R.layout.fragment_stars
     override val viewModel: StarsViewModel by viewModel()

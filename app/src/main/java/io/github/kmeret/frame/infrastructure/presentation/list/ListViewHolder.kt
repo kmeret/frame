@@ -1,4 +1,4 @@
-package io.github.kmeret.frame.infrastructure.presentation.base.list
+package io.github.kmeret.frame.infrastructure.presentation.list
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView

@@ -6,10 +6,9 @@ import io.github.kmeret.frame.data.github.GithubService
 import io.github.kmeret.frame.data.github.model.GithubUser
 import io.github.kmeret.frame.domain.cases.NetworkLiveUseCase
 import io.github.kmeret.frame.domain.entity.User
-import io.github.kmeret.frame.infrastructure.presentation.base.viewmodel.DataEvent
+import io.github.kmeret.frame.infrastructure.application.lifecycle.DataEvent
 import io.reactivex.Flowable
 import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.rxkotlin.subscribeBy
 
 class FollowersViewModel(private val githubService: GithubService) : ViewModel() {
 
