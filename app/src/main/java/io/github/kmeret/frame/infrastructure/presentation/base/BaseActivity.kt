@@ -8,6 +8,7 @@ import io.github.kmeret.frame.infrastructure.application.permissions.PermissionM
 abstract class BaseActivity : AppCompatActivity() {
 
     abstract val layoutResId: Int
+
     lateinit var permissionManager: PermissionManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,10 +21,11 @@ abstract class BaseActivity : AppCompatActivity() {
 
     abstract fun initView()
 
-    override fun onRequestPermissionsResult(requestCode: Int,
-                                            permissions: Array<out String>,
-                                            grantResults: IntArray) {
-
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         permissionManager.onRequestPermissionsResult(requestCode, permissions, grantResults)
     }

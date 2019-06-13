@@ -10,9 +10,11 @@ abstract class BaseFragment : Fragment() {
 
     abstract val layoutResId: Int
 
-    override fun onCreateView(inflater: LayoutInflater,
-                              container: ViewGroup?,
-                              savedInstanceState: Bundle?): View {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
 
         val rootView = layoutInflater.inflate(layoutResId, container, false)
         initView(rootView)

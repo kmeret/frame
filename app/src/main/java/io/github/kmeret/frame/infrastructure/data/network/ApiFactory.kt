@@ -4,7 +4,6 @@ import io.github.kmeret.frame.demo.BuildConfig
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
 class ApiFactory<T> {
@@ -14,7 +13,6 @@ class ApiFactory<T> {
         val retrofitBuilder = Retrofit.Builder()
                 .baseUrl(baseUrl)
                 .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
 
         val clientBuilder = OkHttpClient.Builder()
         headers.forEach { clientBuilder.addInterceptor(it) }

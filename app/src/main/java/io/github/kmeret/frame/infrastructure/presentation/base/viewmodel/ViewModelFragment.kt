@@ -6,8 +6,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import io.github.kmeret.frame.infrastructure.presentation.base.BaseFragment
 
-abstract class ViewModelFragment<VM : ViewModel> : BaseFragment(),
-    ViewModelHolder<VM> {
+abstract class ViewModelFragment<VM : ViewModel> : BaseFragment(), ViewModelHolder<VM> {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

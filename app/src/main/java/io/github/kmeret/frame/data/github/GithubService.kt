@@ -11,7 +11,7 @@ import retrofit2.http.Path
 interface GithubService {
 
     @GET("users/{userName}")
-    fun getProfile(@Path("userName") userName: String): Call<GithubProfile>
+    suspend fun getProfile(@Path("userName") userName: String): GithubProfile
 
     @GET("users/{userName}/starred")
     fun getStarredRepoList(@Path("userName") userName: String): Call<List<GithubRepo>>

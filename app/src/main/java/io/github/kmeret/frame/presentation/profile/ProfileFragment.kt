@@ -16,10 +16,10 @@ import kotlinx.android.synthetic.main.template_profile_repo.view.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class ProfileFragment : ViewModelFragment<ProfileViewModel>() {
-
     override val layoutResId = R.layout.fragment_profile
     override val viewModel: ProfileViewModel by viewModel()
     private val reposViewModel: ReposViewModel by viewModel()
+
     private val reposAdapter =
         ListAdapter<Repo>(R.layout.template_profile_repo) { repo, repoView ->
             repoView.apply {
@@ -30,7 +30,7 @@ class ProfileFragment : ViewModelFragment<ProfileViewModel>() {
         }
 
     override fun initView(rootView: View) {
-        rootView.apply {
+        rootView.run {
             profileRefreshLayout.setOnRefreshListener {
                 viewModel.requestProfile()
                 reposViewModel.requestRepoList()
@@ -43,7 +43,7 @@ class ProfileFragment : ViewModelFragment<ProfileViewModel>() {
     }
 
     override fun initViewModel() {
-        viewModel.profile.observe {
+        viewModel.networkProfile.observe {
             profileAvatarView.loadByUrl(it.avatarUrl)
             profileBioView.text = it.bio
             profileCompanyView.text = it.company
