@@ -10,6 +10,13 @@ abstract class BaseApp : Application() {
         const val DEFAULT_DELAY_MS = 1000L
     }
 
+    abstract fun onInit()
+
+    override fun onCreate() {
+        super.onCreate()
+        onInit()
+    }
+
     fun mapError(exception: Throwable): String {
         with(applicationContext) {
             return when (exception) {

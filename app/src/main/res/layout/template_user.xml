@@ -7,7 +7,7 @@
 	>
 	
 	<androidx.appcompat.widget.AppCompatImageView
-		android:id="@+id/userAvatarView"
+		android:id="@+id/user_avatar"
 		android:layout_width="50dp"
 		android:layout_height="50dp"
 		android:layout_margin="16dp"
@@ -17,15 +17,15 @@
 		/>
 	
 	<androidx.appcompat.widget.AppCompatTextView
-		android:id="@+id/userFullNameView"
+		android:id="@+id/user_name"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:layout_marginStart="16dp"
 		android:textSize="16sp"
 		android:textColor="@color/black"
-		app:layout_constraintStart_toEndOf="@id/userAvatarView"
-		app:layout_constraintTop_toTopOf="@id/userAvatarView"
-		app:layout_constraintBottom_toBottomOf="@id/userAvatarView"
+		app:layout_constraintStart_toEndOf="@id/user_avatar"
+		app:layout_constraintTop_toTopOf="@id/user_avatar"
+		app:layout_constraintBottom_toBottomOf="@id/user_avatar"
 		/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

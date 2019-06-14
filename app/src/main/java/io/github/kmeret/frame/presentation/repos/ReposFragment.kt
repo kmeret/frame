@@ -1,27 +1,45 @@
 package io.github.kmeret.frame.presentation.repos
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.Fragment
-import io.github.kmeret.frame.demo.R
-import io.github.kmeret.frame.demo.databinding.FragmentReposBinding
+import io.github.kmeret.frame.R
+import io.github.kmeret.frame.domain.model.Repo
+import io.github.kmeret.frame.infrastructure.application.lifecycle.VMFragment
+import io.github.kmeret.frame.infrastructure.presentation.extensions.attachAdapter
+import io.github.kmeret.frame.infrastructure.presentation.extensions.isVisible
+import io.github.kmeret.frame.infrastructure.presentation.list.ListAdapter
+import kotlinx.android.synthetic.main.fragment_repos.*
+import kotlinx.android.synthetic.main.template_repo.view.*
 import org.koin.android.viewmodel.ext.android.sharedViewModel
 
-class ReposFragment : Fragment() {
+class ReposFragment : VMFragment<ReposViewModel>() {
+    override val layoutResId = R.layout.fragment_repos
 
-    private val viewModel by sharedViewModel<ReposViewModel>()
+    override val viewModel by sharedViewModel<ReposViewModel>()
 
-    override fun onCreateView(inflater: LayoutInflater,
-                              container: ViewGroup?,
-                              savedInstanceState: Bundle?): View {
-
-        val reposBinding: FragmentReposBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_repos, container, false)
-        reposBinding.setLifecycleOwner(viewLifecycleOwner)
-        reposBinding.viewModel = viewModel
-        return reposBinding.root
+    private val reposAdapter = ListAdapter<Repo>(R.layout.template_repo) { repo, repoView ->
+        repoView.run {
+            repo_name.text = repo.name
+            repo_description.text = repo.description
+            repo_language.text = repo.language
+        }
     }
 
+    override fun initLayout(savedInstanceState: Bundle?) {
+        repos_refresh.setOnRefreshListener { viewModel.requestRepoList() }
+        repos_list.attachAdapter(reposAdapter)
+    }
+
+    override fun subscribeLiveData() {
+        viewModel.isLoading.subscribe { repos_refresh.isRefreshing = it }
+        viewModel.repoList.subscribe {
+            repos_list.isVisible = it.isNotEmpty()
+            repos_empty.isVisible = it.isEmpty()
+            reposAdapter.updateList(it)
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.requestRepoList()
+    }
 }

@@ -2,7 +2,7 @@
 <androidx.cardview.widget.CardView
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
-	android:id="@+id/repoProfileCardView"
+	android:id="@+id/repo_profile_card"
 	android:layout_width="150dp"
 	android:layout_height="wrap_content"
 	android:layout_margin="8dp"
@@ -15,11 +15,11 @@
 		>
 		
 		<androidx.appcompat.widget.AppCompatTextView
-			android:id="@+id/repoProfileNameView"
+			android:id="@+id/repo_profile_name"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_margin="8dp"
-			android:textColor="@color/blueDark"
+			android:textColor="@color/blue_dark"
 			android:textSize="16sp"
 			android:textStyle="bold"
 			app:layout_constraintStart_toStartOf="parent"
@@ -27,24 +27,24 @@
 			/>
 		
 		<androidx.appcompat.widget.AppCompatTextView
-			android:id="@+id/repoProfileDescriptionView"
+			android:id="@+id/repo_profile_description"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_marginTop="8dp"
 			android:textSize="12sp"
-			app:layout_constraintTop_toBottomOf="@id/repoProfileNameView"
-			app:layout_constraintStart_toStartOf="@id/repoProfileNameView"
+			app:layout_constraintTop_toBottomOf="@id/repo_profile_name"
+			app:layout_constraintStart_toStartOf="@id/repo_profile_name"
 			/>
 		
 		<androidx.appcompat.widget.AppCompatTextView
-			android:id="@+id/repoProfileLanguageView"
+			android:id="@+id/repo_profile_language"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_marginTop="8dp"
 			android:layout_marginBottom="8dp"
 			android:textSize="14sp"
-			app:layout_constraintTop_toBottomOf="@id/repoProfileDescriptionView"
-			app:layout_constraintStart_toStartOf="@id/repoProfileDescriptionView"
+			app:layout_constraintTop_toBottomOf="@id/repo_profile_description"
+			app:layout_constraintStart_toStartOf="@id/repo_profile_description"
 			app:layout_constraintBottom_toBottomOf="parent"
 			/>
 		

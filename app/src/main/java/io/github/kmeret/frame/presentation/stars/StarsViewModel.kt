@@ -1,29 +1,37 @@
 package io.github.kmeret.frame.presentation.stars
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.Transformations
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.MutableLiveData
 import io.github.kmeret.frame.data.github.GithubConfig
 import io.github.kmeret.frame.data.github.GithubService
-import io.github.kmeret.frame.data.github.model.GithubRepo
-import io.github.kmeret.frame.domain.cases.NetworkLiveUseCase
-import io.github.kmeret.frame.domain.entity.Repo
+import io.github.kmeret.frame.domain.model.Repo
+import io.github.kmeret.frame.infrastructure.application.lifecycle.BaseViewModel
+import io.github.kmeret.frame.infrastructure.application.lifecycle.onNext
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
-class StarsViewModel(private val githubService: GithubService) : ViewModel() {
+class StarsViewModel(
+    private val githubService: GithubService
+) : BaseViewModel() {
 
-    private val useCase = NetworkLiveUseCase<List<GithubRepo>>()
+    val starredList = MutableLiveData<List<Repo>>()
 
-    val repoList: LiveData<List<Repo>> = Transformations.map(useCase.data) { githubRepoList -> githubRepoList.map { it.map() } }
-    val loading: LiveData<Boolean> = useCase.loading
-    val empty: LiveData<Boolean> = useCase.empty
-    val error: LiveData<Exception> = useCase.error
+    override fun onInit() {
 
-    init {
-        requestStarredList()
+    }
+
+    override fun onBackPressed() {
+
     }
 
     fun requestStarredList() {
-        useCase.execute(githubService.getStarredRepoList(GithubConfig.userName))
+        CoroutineScope(Dispatchers.IO).launch {
+            val githubRepoList = githubService.getStarredRepoList(GithubConfig.userName)
+            withContext(Dispatchers.Main) {
+                starredList.onNext(githubRepoList.map { it.map() })
+            }
+        }
     }
 
 }

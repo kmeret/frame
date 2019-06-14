@@ -11,12 +11,12 @@ abstract class VMFragment<VM : BaseViewModel> : LayoutFragment(), VMHolder<VM> {
         super.onActivityCreated(savedInstanceState)
         viewModel.commands.subscribeCommand { onCommandReceived(it) }
         viewModel.errors.subscribeCommand { layoutActivity?.showError(it) }
-        initViewModel()
+        subscribeLiveData()
     }
 
     @CallSuper
     open fun onBackPressed() {
-        viewModel.onClosed()
+        viewModel.onBackPressed()
     }
 
     @CallSuper

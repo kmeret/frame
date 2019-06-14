@@ -1,22 +1,20 @@
 package io.github.kmeret.frame.application
 
-import io.github.kmeret.frame.application.di.networkModule
-import io.github.kmeret.frame.application.di.storageModule
-import io.github.kmeret.frame.application.di.viewModelModule
 import io.github.kmeret.frame.infrastructure.application.BaseApp
-import org.koin.android.ext.android.startKoin
+import org.koin.android.ext.koin.androidContext
+import org.koin.android.ext.koin.androidLogger
+import org.koin.core.context.startKoin
 
 class App : BaseApp() {
-
-    override fun onCreate() {
-        super.onCreate()
+    override fun onInit() {
         initDI()
     }
 
-    private fun initDI() = startKoin(this, listOf(
-            networkModule,
-            storageModule,
-            viewModelModule
-    ))
-
+    private fun initDI() {
+        startKoin {
+            androidLogger()
+            androidContext(applicationContext)
+            modules(Modules.getModuleList())
+        }
+    }
 }

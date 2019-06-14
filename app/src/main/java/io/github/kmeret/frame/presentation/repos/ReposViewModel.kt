@@ -1,30 +1,37 @@
 package io.github.kmeret.frame.presentation.repos
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.Transformations
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.MutableLiveData
 import io.github.kmeret.frame.data.github.GithubConfig
 import io.github.kmeret.frame.data.github.GithubService
-import io.github.kmeret.frame.data.github.model.GithubRepo
-import io.github.kmeret.frame.demo.R
-import io.github.kmeret.frame.demo.databinding.TemplateRepoBinding
-import io.github.kmeret.frame.domain.cases.NetworkLiveUseCase
-import io.github.kmeret.frame.domain.entity.Repo
+import io.github.kmeret.frame.domain.model.Repo
+import io.github.kmeret.frame.infrastructure.application.lifecycle.BaseViewModel
+import io.github.kmeret.frame.infrastructure.application.lifecycle.onNext
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
-class ReposViewModel(private val githubService: GithubService) : ViewModel() {
+class ReposViewModel(
+    private val githubService: GithubService
+) : BaseViewModel() {
 
-    private val useCase = NetworkLiveUseCase<List<GithubRepo>>()
-    val adapter = RecyclerBindingAdapter<TemplateRepoBinding, Repo>(R.layout.template_repo)
+    val repoList = MutableLiveData<List<Repo>>()
 
-    val repoList: LiveData<List<Repo>> = Transformations.map(useCase.data) { githubRepoList -> githubRepoList.map { it.map() } }
-    val loading: LiveData<Boolean> = useCase.loading
-    val empty: LiveData<Boolean> = useCase.empty
-    val error: LiveData<Exception> = useCase.error
+    override fun onInit() {
 
-    init {
-        requestRepoList()
     }
 
-    fun requestRepoList() = useCase.execute(githubService.getRepoList(GithubConfig.userName))
+    override fun onBackPressed() {
+
+    }
+
+    fun requestRepoList()  {
+        CoroutineScope(Dispatchers.IO).launch {
+            val githubRepoList = githubService.getRepoList(GithubConfig.userName)
+            withContext(Dispatchers.Main) {
+                repoList.onNext(githubRepoList.map { it.map() })
+            }
+        }
+    }
 
 }

@@ -8,71 +8,70 @@
 	>
 	
 	<androidx.appcompat.widget.AppCompatTextView
-		android:id="@+id/repoTitleView"
+		android:id="@+id/repo_starred_title"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:layout_marginTop="16dp"
 		android:textSize="16sp"
-		android:textColor="@color/blueDark"
+		android:textColor="@color/blue_dark"
 		app:layout_constraintTop_toTopOf="parent"
 		app:layout_constraintStart_toStartOf="parent"
 		/>
 	
 	<androidx.appcompat.widget.AppCompatTextView
-		android:id="@+id/repoDescriptionView"
+		android:id="@+id/repo_description"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:layout_marginTop="8dp"
 		android:textSize="12sp"
-		app:layout_constraintTop_toBottomOf="@id/repoTitleView"
-		app:layout_constraintStart_toStartOf="@id/repoTitleView"
+		app:layout_constraintTop_toBottomOf="@id/repo_starred_title"
+		app:layout_constraintStart_toStartOf="@id/repo_starred_title"
 		/>
 	
 	<androidx.appcompat.widget.AppCompatTextView
-		android:id="@+id/repoLanguageView"
+		android:id="@+id/repo_language"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:layout_marginTop="8dp"
 		android:textSize="14sp"
-		app:layout_constraintTop_toBottomOf="@id/repoDescriptionView"
+		app:layout_constraintTop_toBottomOf="@id/repo_description"
 		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintEnd_toStartOf="@+id/repoStarsView"
+		app:layout_constraintEnd_toStartOf="@+id/repo_starred_stars"
 		app:layout_constraintHorizontal_chainStyle="spread_inside"
 		/>
 	
-	
 	<TextView
-		android:id="@+id/repoStarsView"
+		android:id="@+id/repo_starred_stars"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:layout_marginStart="8dp"
 		android:textSize="14sp"
 		android:drawableStart="@drawable/ic_star"
-		app:layout_constraintStart_toEndOf="@+id/repoLanguageView"
-		app:layout_constraintBaseline_toBaselineOf="@id/repoLanguageView"
-		app:layout_constraintEnd_toStartOf="@+id/repoForksView"
+		app:layout_constraintStart_toEndOf="@+id/repo_language"
+		app:layout_constraintBaseline_toBaselineOf="@id/repo_language"
+		app:layout_constraintEnd_toStartOf="@+id/repo_starred_forks"
 		/>
 	
 	<TextView
-		android:id="@+id/repoForksView"
+		android:id="@+id/repo_starred_forks"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:layout_marginStart="8dp"
 		android:textSize="14sp"
 		android:drawableStart="@drawable/ic_fork"
-		app:layout_constraintStart_toEndOf="@+id/repoStarsView"
-		app:layout_constraintBaseline_toBaselineOf="@id/repoStarsView"
-		app:layout_constraintEnd_toStartOf="@+id/repoUpdatedView"
+		app:layout_constraintStart_toEndOf="@+id/repo_starred_stars"
+		app:layout_constraintBaseline_toBaselineOf="@id/repo_starred_stars"
+		app:layout_constraintEnd_toStartOf="@+id/repo_updated_at"
 		/>
 	
 	<TextView
-		android:id="@+id/repoUpdatedView"
+		android:id="@+id/repo_updated_at"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:layout_marginStart="8dp"
 		android:textSize="14sp"
-		app:layout_constraintStart_toEndOf="@+id/repoForksView"
-		app:layout_constraintBaseline_toBaselineOf="@id/repoForksView"
+		app:layout_constraintStart_toEndOf="@+id/repo_starred_forks"
+		app:layout_constraintBaseline_toBaselineOf="@id/repo_starred_forks"
 		app:layout_constraintBottom_toBottomOf="parent"
 		app:layout_constraintEnd_toEndOf="parent"
 		/>

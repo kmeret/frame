@@ -4,7 +4,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import io.github.kmeret.frame.data.storage.base.Identifiable
-import io.github.kmeret.frame.domain.entity.Profile
+import io.github.kmeret.frame.domain.model.Profile
 
 @Entity
 data class RoomProfile(

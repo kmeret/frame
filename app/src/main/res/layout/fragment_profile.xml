@@ -2,7 +2,7 @@
 <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
-	android:id="@+id/profileRefreshLayout"
+	android:id="@+id/profile_refresh"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
 	>
@@ -13,7 +13,7 @@
 		>
 		
 		<androidx.appcompat.widget.AppCompatTextView
-			android:id="@+id/profileEmptyView"
+			android:id="@+id/profile_empty"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_gravity="center"
@@ -27,13 +27,13 @@
 			>
 			
 			<androidx.constraintlayout.widget.ConstraintLayout
-				android:id="@+id/profileLayout"
+				android:id="@+id/profile_layout"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				>
 				
 				<androidx.appcompat.widget.AppCompatImageView
-					android:id="@+id/profileAvatarView"
+					android:id="@+id/profile_avatar"
 					android:layout_width="200dp"
 					android:layout_height="200dp"
 					android:layout_marginTop="16dp"
@@ -43,76 +43,76 @@
 					/>
 				
 				<androidx.appcompat.widget.AppCompatTextView
-					android:id="@+id/profileNameView"
+					android:id="@+id/profile_name"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					android:textStyle="bold"
 					android:textSize="20sp"
-					app:layout_constraintStart_toEndOf="@id/profileAvatarView"
+					app:layout_constraintStart_toEndOf="@id/profile_avatar"
 					app:layout_constraintEnd_toEndOf="parent"
 					app:layout_constraintTop_toTopOf="parent"
-					app:layout_constraintBottom_toTopOf="@+id/profileLoginView"
+					app:layout_constraintBottom_toTopOf="@+id/profile_login"
 					/>
 				
 				<androidx.appcompat.widget.AppCompatTextView
-					android:id="@+id/profileLoginView"
+					android:id="@+id/profile_login"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					android:textSize="18sp"
 					android:layout_marginTop="4dp"
-					app:layout_constraintTop_toBottomOf="@+id/profileNameView"
-					app:layout_constraintStart_toStartOf="@id/profileNameView"
-					app:layout_constraintEnd_toEndOf="@id/profileNameView"
-					app:layout_constraintBottom_toTopOf="@+id/profileBioView"
+					app:layout_constraintTop_toBottomOf="@+id/profile_name"
+					app:layout_constraintStart_toStartOf="@id/profile_name"
+					app:layout_constraintEnd_toEndOf="@id/profile_name"
+					app:layout_constraintBottom_toTopOf="@+id/profile_bio"
 					/>
 				
 				<androidx.appcompat.widget.AppCompatTextView
-					android:id="@+id/profileBioView"
+					android:id="@+id/profile_bio"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					android:textSize="14sp"
 					android:layout_marginTop="8dp"
-					app:layout_constraintTop_toBottomOf="@+id/profileLoginView"
-					app:layout_constraintStart_toStartOf="@id/profileLoginView"
-					app:layout_constraintEnd_toEndOf="@id/profileLoginView"
-					app:layout_constraintBottom_toTopOf="@+id/profileCompanyView"
+					app:layout_constraintTop_toBottomOf="@+id/profile_login"
+					app:layout_constraintStart_toStartOf="@id/profile_login"
+					app:layout_constraintEnd_toEndOf="@id/profile_login"
+					app:layout_constraintBottom_toTopOf="@+id/profile_company"
 					/>
 				
 				<androidx.appcompat.widget.AppCompatTextView
-					android:id="@+id/profileCompanyView"
+					android:id="@+id/profile_company"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					android:textSize="12sp"
 					android:drawableStart="@drawable/ic_people"
 					android:layout_marginTop="16dp"
-					app:layout_constraintTop_toBottomOf="@+id/profileBioView"
-					app:layout_constraintStart_toStartOf="@id/profileBioView"
-					app:layout_constraintEnd_toEndOf="@id/profileBioView"
-					app:layout_constraintBottom_toTopOf="@+id/profileLocationView"
+					app:layout_constraintTop_toBottomOf="@+id/profile_bio"
+					app:layout_constraintStart_toStartOf="@id/profile_bio"
+					app:layout_constraintEnd_toEndOf="@id/profile_bio"
+					app:layout_constraintBottom_toTopOf="@+id/profile_location"
 					/>
 				
 				<androidx.appcompat.widget.AppCompatTextView
-					android:id="@+id/profileLocationView"
+					android:id="@+id/profile_location"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					android:textSize="12sp"
 					android:drawableStart="@drawable/ic_location"
 					android:layout_marginTop="8dp"
-					app:layout_constraintTop_toBottomOf="@+id/profileCompanyView"
-					app:layout_constraintStart_toStartOf="@id/profileCompanyView"
-					app:layout_constraintEnd_toEndOf="@id/profileCompanyView"
-					app:layout_constraintBottom_toBottomOf="@id/profileAvatarView"
+					app:layout_constraintTop_toBottomOf="@+id/profile_company"
+					app:layout_constraintStart_toStartOf="@id/profile_company"
+					app:layout_constraintEnd_toEndOf="@id/profile_company"
+					app:layout_constraintBottom_toBottomOf="@id/profile_avatar"
 					/>
 				
 				<androidx.recyclerview.widget.RecyclerView
-					android:id="@+id/profileRepoListView"
+					android:id="@+id/profile_repo_list"
 					android:layout_width="0dp"
 					android:layout_height="wrap_content"
 					android:layout_marginEnd="16dp"
 					android:layout_marginTop="16dp"
 					android:layout_marginBottom="16dp"
-					app:layout_constraintTop_toBottomOf="@id/profileAvatarView"
-					app:layout_constraintStart_toStartOf="@id/profileAvatarView"
+					app:layout_constraintTop_toBottomOf="@id/profile_avatar"
+					app:layout_constraintStart_toStartOf="@id/profile_avatar"
 					app:layout_constraintEnd_toEndOf="parent"
 					app:layout_constraintBottom_toBottomOf="parent"
 					/>

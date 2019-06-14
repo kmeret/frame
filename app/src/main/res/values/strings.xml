@@ -14,8 +14,8 @@
 	<string name="no_connection_exception">Problems with network connection!</string>
 	<string name="unknown_exception">Something went wrong</string>
 	
-	<string name="repos_not_found">This user doesn’t have any public repositories yet.</string>
-	<string name="starred_repos_not_found">This user doesn’t have any starred repositories yet.</string>
+	<string name="repos_not_found">This user does not have any public repositories yet.</string>
+	<string name="starred_repos_not_found">This user does not have any starred repositories yet.</string>
 	<string name="following_not_found">This user isn’t following anybody.</string>
 	<string name="profile_is_empty">Profile is empty!</string>
 	

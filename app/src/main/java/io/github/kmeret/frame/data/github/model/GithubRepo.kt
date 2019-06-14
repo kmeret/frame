@@ -1,7 +1,7 @@
 package io.github.kmeret.frame.data.github.model
 
 import com.google.gson.annotations.SerializedName
-import io.github.kmeret.frame.domain.entity.Repo
+import io.github.kmeret.frame.domain.model.Repo
 
 data class GithubRepo(
         val id: Long,

@@ -3,31 +3,31 @@
 	xmlns:android="http://schemas.android.com/apk/res/android">
 	
 	<item
-		android:id="@id/profileFragment"
+		android:id="@+id/nav_profile"
 		android:title="@string/profile"
 		android:icon="@drawable/ic_person"
 		/>
 	
 	<item
-		android:id="@id/reposFragment"
+		android:id="@+id/nav_repos"
 		android:title="@string/repos"
 		android:icon="@drawable/ic_storage"
 		/>
 	
 	<item
-		android:id="@id/starsFragment"
+		android:id="@+id/nav_stars"
 		android:title="@string/stars"
 		android:icon="@drawable/ic_star"
 		/>
 	
 	<item
-		android:id="@id/followersFragment"
+		android:id="@+id/nav_followers"
 		android:title="@string/followers"
 		android:icon="@drawable/ic_left"
 		/>
 	
 	<item
-		android:id="@id/followingFragment"
+		android:id="@+id/nav_following"
 		android:title="@string/following"
 		android:icon="@drawable/ic_right"
 		/>

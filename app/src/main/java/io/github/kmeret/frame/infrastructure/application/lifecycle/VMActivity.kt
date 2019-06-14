@@ -9,7 +9,7 @@ abstract class VMActivity<VM : BaseViewModel> : LayoutActivity(), VMHolder<VM> {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModel.commands.subscribeCommand { onCommandReceived(it) }
-        initViewModel()
+        subscribeLiveData()
         viewModel.onInit()
     }
 

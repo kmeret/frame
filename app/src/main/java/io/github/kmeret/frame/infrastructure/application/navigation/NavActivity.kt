@@ -1,35 +1,50 @@
 package io.github.kmeret.frame.infrastructure.application.navigation
 
 import android.os.Bundle
-import androidx.annotation.IdRes
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import io.github.kmeret.frame.R
 import io.github.kmeret.frame.infrastructure.application.lifecycle.BaseViewModel
 import io.github.kmeret.frame.infrastructure.application.lifecycle.VMActivity
 import io.github.kmeret.frame.infrastructure.application.lifecycle.VMFragment
+import org.koin.android.ext.android.inject
 import ru.terrakok.cicerone.Navigator
+import ru.terrakok.cicerone.NavigatorHolder
 import ru.terrakok.cicerone.android.support.SupportAppNavigator
 import ru.terrakok.cicerone.commands.Command
 
 abstract class NavActivity<VM : BaseViewModel> : VMActivity<VM>() {
 
-    private lateinit var navigator: Navigator
+    abstract val fragmentsContainerId: Int
 
+    private val navigationHolder: NavigatorHolder by inject()
     private val currentFragment: VMFragment<*>?
-        get() = supportFragmentManager.findFragmentById(getFragmentsContainerId()) as? VMFragment<*>
+        get() = supportFragmentManager.findFragmentById(fragmentsContainerId) as? VMFragment<*>
+
+    private lateinit var navigator: Navigator
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initNavigator()
-        lifecycle.addObserver(NavLifecycle(navigator))
     }
 
-    @IdRes
-    abstract fun getFragmentsContainerId(): Int
+    override fun onResume() {
+        super.onResume()
+        navigationHolder.setNavigator(navigator)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        navigationHolder.removeNavigator()
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        currentFragment?.onBackPressed()
+    }
 
     private fun initNavigator() {
-        navigator = object : SupportAppNavigator(this, getFragmentsContainerId()) {
+        navigator = object : SupportAppNavigator(this, fragmentsContainerId) {
             override fun setupFragmentTransaction(
                 command: Command?,
                 currentFragment: Fragment?,

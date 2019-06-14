@@ -2,6 +2,7 @@ package io.github.kmeret.frame.infrastructure.application.lifecycle
 
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import java.util.concurrent.ConcurrentLinkedQueue
 
@@ -20,4 +21,12 @@ fun <T> LiveCommand<T>.observeCommand(owner: LifecycleOwner, action: (T) -> Unit
             }
         } while (command != null)
     })
+}
+
+fun <T> MutableLiveData<T>.onNext(data: T) {
+    this.value = data
+}
+
+fun <T> MutableLiveData<T>.get(): T? {
+    return this.value
 }

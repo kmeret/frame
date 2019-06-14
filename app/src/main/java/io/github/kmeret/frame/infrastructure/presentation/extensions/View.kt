@@ -3,10 +3,6 @@ package io.github.kmeret.frame.infrastructure.presentation.extensions
 import android.view.*
 import androidx.core.view.GestureDetectorCompat
 
-fun View.visible(visible: Boolean) {
-    this.visibility = if (visible) View.VISIBLE else View.GONE
-}
-
 fun View.onFocus(action: (hasFocus: Boolean) -> Unit) =
         setOnFocusChangeListener { _, hasFocus ->
             action.invoke(hasFocus)
@@ -36,3 +32,21 @@ fun GestureDetectorCompat.onDoubleTap(action: () -> Unit) =
 
 fun ViewGroup.inflate(layoutRes: Int, attach: Boolean = false): View =
         LayoutInflater.from(context).inflate(layoutRes, this, attach)
+
+inline var View.isVisible: Boolean
+    get() = visibility == View.VISIBLE
+    set(value) {
+        visibility = if (value) View.VISIBLE else View.GONE
+    }
+
+inline var View.isInvisible: Boolean
+    get() = visibility == View.INVISIBLE
+    set(value) {
+        visibility = if (value) View.INVISIBLE else View.VISIBLE
+    }
+
+inline var View.isGone: Boolean
+    get() = visibility == View.GONE
+    set(value) {
+        visibility = if (value) View.GONE else View.VISIBLE
+    }

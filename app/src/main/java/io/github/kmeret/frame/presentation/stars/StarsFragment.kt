@@ -1,61 +1,55 @@
 package io.github.kmeret.frame.presentation.stars
 
-import android.view.View
+import android.os.Bundle
 import android.widget.LinearLayout
 import androidx.recyclerview.widget.DividerItemDecoration
-import io.github.kmeret.frame.demo.R
-import io.github.kmeret.frame.domain.entity.Repo
-import io.github.kmeret.frame.infrastructure.presentation.list.ListAdapter
+import io.github.kmeret.frame.R
+import io.github.kmeret.frame.domain.model.Repo
 import io.github.kmeret.frame.infrastructure.application.lifecycle.VMFragment
 import io.github.kmeret.frame.infrastructure.presentation.extensions.attachAdapter
-import io.github.kmeret.frame.infrastructure.presentation.extensions.visible
-import io.github.kmeret.frame.presentation.ExceptionHandler
+import io.github.kmeret.frame.infrastructure.presentation.extensions.isVisible
+import io.github.kmeret.frame.infrastructure.presentation.list.ListAdapter
 import kotlinx.android.synthetic.main.fragment_stars.*
-import kotlinx.android.synthetic.main.fragment_stars.view.*
 import kotlinx.android.synthetic.main.template_repo_starred.view.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class StarsFragment : VMFragment<StarsViewModel>() {
-
     override val layoutResId = R.layout.fragment_stars
+
     override val viewModel: StarsViewModel by viewModel()
 
-    private lateinit var repoListAdapter: ListAdapter<Repo>
-
-    override fun initView(rootView: View) {
-        repoListAdapter =
-            ListAdapter(R.layout.template_repo_starred) { repo, repoRootView ->
-                repoRootView.also {
-                    it.repoTitleView.text = repo.fullName
-                    it.repoDescriptionView.text = repo.description
-                    it.repoLanguageView.text = repo.language
-                    it.repoStarsView.text = repo.starsCount.toString()
-                    it.repoForksView.text = repo.forksCount.toString()
-                    it.repoUpdatedView.text = repo.updatedAt
-
-                    if (repo.description.isEmpty()) it.repoDescriptionView.visible(false)
-                }
-            }
-        rootView.apply {
-            repoListView.apply {
-                attachAdapter(repoListAdapter)
-                addItemDecoration(DividerItemDecoration(context, LinearLayout.VERTICAL))
-            }
-            starsRefreshLayout.setOnRefreshListener { viewModel.requestStarredList() }
+    private val repoListAdapter = ListAdapter<Repo>(R.layout.template_repo_starred) { repo, repoRootView ->
+        repoRootView.also {
+            it.repo_starred_title.text = repo.fullName
+            it.repo_description.text = repo.description
+            it.repo_description.isVisible = repo.description.isNotEmpty()
+            it.repo_language.text = repo.language
+            it.repo_starred_stars.text = repo.starsCount.toString()
+            it.repo_starred_forks.text = repo.forksCount.toString()
+            it.repo_updated_at.text = repo.updatedAt
         }
     }
 
-    override fun initViewModel() {
-        viewModel.apply {
-            repoList.observe { repoListAdapter.updateList(it) }
-            loading.observe { isLoading -> starsRefreshLayout.isRefreshing = isLoading }
-            empty.observe { isEmpty ->
-                repoListView.visible(!isEmpty)
-                starsEmpty.visible(isEmpty)
-            }
-            error.observe { ExceptionHandler.handle(it, requireContext()) }
+    override fun initLayout(savedInstanceState: Bundle?) {
+        stars_refresh.setOnRefreshListener { viewModel.requestStarredList() }
+        stars_list.run {
+            attachAdapter(repoListAdapter)
+            addItemDecoration(DividerItemDecoration(context, LinearLayout.VERTICAL))
         }
+    }
 
+    override fun subscribeLiveData() {
+        viewModel.isLoading.subscribe { stars_refresh.isRefreshing = it }
+        viewModel.starredList.subscribe {
+            stars_list.isVisible = it.isNotEmpty()
+            stars_empty.isVisible = it.isEmpty()
+            repoListAdapter.updateList(it)
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.requestStarredList()
     }
 
 }

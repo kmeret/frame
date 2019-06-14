@@ -1,61 +1,50 @@
 package io.github.kmeret.frame.presentation.following
 
-import android.view.View
+import android.os.Bundle
 import android.widget.LinearLayout
 import androidx.recyclerview.widget.DividerItemDecoration
-import io.github.kmeret.frame.demo.R
-import io.github.kmeret.frame.domain.entity.User
-import io.github.kmeret.frame.infrastructure.data.network.loadByUrl
-import io.github.kmeret.frame.infrastructure.presentation.list.ListAdapter
+import io.github.kmeret.frame.R
+import io.github.kmeret.frame.domain.model.User
 import io.github.kmeret.frame.infrastructure.application.lifecycle.VMFragment
+import io.github.kmeret.frame.infrastructure.data.network.loadByUrl
 import io.github.kmeret.frame.infrastructure.presentation.extensions.attachAdapter
-import io.github.kmeret.frame.infrastructure.presentation.extensions.visible
-import io.github.kmeret.frame.presentation.ExceptionHandler
+import io.github.kmeret.frame.infrastructure.presentation.extensions.isVisible
+import io.github.kmeret.frame.infrastructure.presentation.list.ListAdapter
 import kotlinx.android.synthetic.main.fragment_following.*
-import kotlinx.android.synthetic.main.fragment_following.view.*
 import kotlinx.android.synthetic.main.template_user.view.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class FollowingFragment : VMFragment<FollowingViewModel>() {
-
     override val layoutResId = R.layout.fragment_following
+
     override val viewModel: FollowingViewModel by viewModel()
 
-    private lateinit var userAdapter: ListAdapter<User>
-
-    override fun initView(rootView: View) {
-        userAdapter =
-            ListAdapter(R.layout.template_user) { user, userRootView ->
-                userRootView.apply {
-                    userAvatarView.loadByUrl(user.avatarUrl)
-                    userFullNameView.text = user.login
-                }
-            }
-
-        rootView.apply {
-            followingListView.apply {
-                attachAdapter(userAdapter)
-                addItemDecoration(DividerItemDecoration(requireContext(), LinearLayout.VERTICAL))
-            }
-            followingRefreshLayout.setOnRefreshListener { viewModel.requestUserList() }
+    private val userAdapter: ListAdapter<User> = ListAdapter(R.layout.template_user) { user, userRootView ->
+        userRootView.run {
+            user_avatar.loadByUrl(user.avatarUrl)
+            user_name.text = user.login
         }
     }
 
-    override fun initViewModel() {
-        viewModel.getUserList().observe { userAdapter.updateList(it) }
-        viewModel.getError().observe { ExceptionHandler.handle(it, requireContext()) }
-        viewModel.isEmpty().observe { isEmpty ->
-            followingEmptyView.visible(isEmpty)
-            followingListView.visible(!isEmpty)
+    override fun initLayout(savedInstanceState: Bundle?) {
+        following_refresh.setOnRefreshListener { viewModel.requestFollowingList() }
+        following_list.apply {
+            attachAdapter(userAdapter)
+            addItemDecoration(DividerItemDecoration(requireContext(), LinearLayout.VERTICAL))
         }
-        viewModel.isLoading().observe { isLoading ->
-            followingRefreshLayout.isRefreshing = isLoading
+    }
+
+    override fun subscribeLiveData() {
+        viewModel.isLoading.subscribe { following_refresh.isRefreshing = it }
+        viewModel.followingList.subscribe {
+            following_list.isVisible = it.isNotEmpty()
+            following_empty.isVisible = it.isEmpty()
+            userAdapter.updateList(it)
         }
     }
 
     override fun onResume() {
         super.onResume()
-        viewModel.requestUserList()
+        viewModel.requestFollowingList()
     }
-
 }

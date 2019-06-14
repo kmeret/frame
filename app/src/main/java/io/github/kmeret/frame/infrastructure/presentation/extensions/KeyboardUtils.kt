@@ -1,4 +1,4 @@
-package ru.sksbank.mrm.app.utils
+package io.github.kmeret.frame.infrastructure.presentation.extensions
 
 import android.app.Activity
 import android.content.Context

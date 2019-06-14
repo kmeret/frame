@@ -18,7 +18,7 @@ abstract class BaseViewModel : ViewModel() {
         compositeJob.clear()
     }
 
-    abstract fun onClosed()
+    abstract fun onBackPressed()
 
     abstract fun onInit()
 
