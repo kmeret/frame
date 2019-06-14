@@ -6,7 +6,7 @@ import io.github.kmeret.frame.data.github.model.GithubUser
 import retrofit2.http.GET
 import retrofit2.http.Path
 
-interface GithubService {
+interface GithubOpenApi {
 
     @GET("users/{username}")
     suspend fun getProfile(@Path("username") username: String): GithubProfile

@@ -2,7 +2,7 @@ package io.github.kmeret.frame.presentation.repos
 
 import androidx.lifecycle.MutableLiveData
 import io.github.kmeret.frame.data.github.GithubConfig
-import io.github.kmeret.frame.data.github.GithubService
+import io.github.kmeret.frame.data.github.GithubOpenApi
 import io.github.kmeret.frame.domain.model.Repo
 import io.github.kmeret.frame.infrastructure.application.lifecycle.BaseViewModel
 import io.github.kmeret.frame.infrastructure.application.lifecycle.onNext
@@ -12,7 +12,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class ReposViewModel(
-    private val githubService: GithubService
+    private val githubOpenApi: GithubOpenApi
 ) : BaseViewModel() {
 
     val repoList = MutableLiveData<List<Repo>>()
@@ -27,7 +27,7 @@ class ReposViewModel(
 
     fun requestRepoList()  {
         CoroutineScope(Dispatchers.IO).launch {
-            val githubRepoList = githubService.getRepoList(GithubConfig.userName)
+            val githubRepoList = githubOpenApi.getRepoList(GithubConfig.userName)
             withContext(Dispatchers.Main) {
                 repoList.onNext(githubRepoList.map { it.map() })
             }

@@ -1,4 +1,4 @@
-package io.github.kmeret.frame.infrastructure.coroutines
+package io.github.kmeret.frame.infrastructure.domain.coroutines
 
 import kotlinx.coroutines.Job
 

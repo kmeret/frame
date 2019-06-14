@@ -2,9 +2,10 @@ package io.github.kmeret.frame.application
 
 import androidx.room.Room
 import io.github.kmeret.frame.BuildConfig
+import io.github.kmeret.frame.data.github.GithubOpenApi
 import io.github.kmeret.frame.data.github.GithubOpenApiFactory
-import io.github.kmeret.frame.data.github.GithubService
 import io.github.kmeret.frame.data.storage.Database
+import io.github.kmeret.frame.domain.cases.UserInteractor
 import io.github.kmeret.frame.infrastructure.application.permission.PermissionProvider
 import io.github.kmeret.frame.presentation.followers.FollowersViewModel
 import io.github.kmeret.frame.presentation.following.FollowingViewModel
@@ -22,8 +23,9 @@ object Modules {
     fun getModuleList() = listOf(
         appModule,
         networkModule,
-        navigationModule,
         storageModule,
+        navigationModule,
+        domainModule,
         viewModelModule
     )
 
@@ -33,7 +35,7 @@ object Modules {
 
     private val networkModule = module {
         single { GithubOpenApiFactory() }
-        single { get<GithubOpenApiFactory>().create(GithubService::class.java) }
+        single { get<GithubOpenApiFactory>().create(GithubOpenApi::class.java) }
     }
 
     private val storageModule = module {
@@ -53,6 +55,10 @@ object Modules {
         single { Cicerone.create() }
         single { get<Cicerone<Router>>().router }
         single { get<Cicerone<Router>>().navigatorHolder }
+    }
+
+    private val domainModule = module {
+        single { UserInteractor(get()) }
     }
 
     private val viewModelModule = module {

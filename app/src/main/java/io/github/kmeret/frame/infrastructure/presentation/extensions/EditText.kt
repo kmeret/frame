@@ -1,6 +1,7 @@
 package io.github.kmeret.frame.infrastructure.presentation.extensions
 
 import android.text.Editable
+import android.text.SpannableStringBuilder
 import android.text.TextWatcher
 import android.view.inputmethod.EditorInfo
 import android.widget.EditText
@@ -27,3 +28,5 @@ fun EditText.onDoneClicked(action: () -> Unit) {
         return@setOnEditorActionListener false
     }
 }
+
+fun String.toEditable() = SpannableStringBuilder(this)

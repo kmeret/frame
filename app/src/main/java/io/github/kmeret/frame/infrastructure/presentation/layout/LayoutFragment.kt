@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import io.github.kmeret.frame.infrastructure.application.BaseApp
 import io.github.kmeret.frame.infrastructure.application.extensions.hideKeyboard
-import io.github.kmeret.frame.infrastructure.data.ConvertException
+import io.github.kmeret.frame.infrastructure.domain.ConvertException
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

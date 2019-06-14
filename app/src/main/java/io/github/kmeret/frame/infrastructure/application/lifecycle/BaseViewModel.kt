@@ -2,7 +2,7 @@ package io.github.kmeret.frame.infrastructure.application.lifecycle
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import io.github.kmeret.frame.infrastructure.coroutines.CompositeJob
+import io.github.kmeret.frame.infrastructure.domain.coroutines.CompositeJob
 import kotlinx.coroutines.Job
 
 abstract class BaseViewModel : ViewModel() {
