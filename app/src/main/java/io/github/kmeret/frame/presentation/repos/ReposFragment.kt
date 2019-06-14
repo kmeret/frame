@@ -4,7 +4,7 @@ import android.os.Bundle
 import io.github.kmeret.frame.R
 import io.github.kmeret.frame.domain.model.Repo
 import io.github.kmeret.frame.infrastructure.application.lifecycle.VMFragment
-import io.github.kmeret.frame.infrastructure.presentation.extensions.attachAdapter
+import io.github.kmeret.frame.infrastructure.presentation.extensions.initList
 import io.github.kmeret.frame.infrastructure.presentation.extensions.isVisible
 import io.github.kmeret.frame.infrastructure.presentation.list.ListAdapter
 import kotlinx.android.synthetic.main.fragment_repos.*
@@ -26,7 +26,7 @@ class ReposFragment : VMFragment<ReposViewModel>() {
 
     override fun initLayout(savedInstanceState: Bundle?) {
         repos_refresh.setOnRefreshListener { viewModel.requestRepoList() }
-        repos_list.attachAdapter(reposAdapter)
+        repos_list.initList(reposAdapter)
     }
 
     override fun subscribeLiveData() {

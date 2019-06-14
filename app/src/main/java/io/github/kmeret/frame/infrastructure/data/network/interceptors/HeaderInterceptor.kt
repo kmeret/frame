@@ -1,4 +1,4 @@
-package io.github.kmeret.frame.infrastructure.data.network
+package io.github.kmeret.frame.infrastructure.data.network.interceptors
 
 import okhttp3.Interceptor
 import okhttp3.Response

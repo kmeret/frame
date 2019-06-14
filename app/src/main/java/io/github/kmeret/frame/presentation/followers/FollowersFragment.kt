@@ -6,9 +6,9 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import io.github.kmeret.frame.R
 import io.github.kmeret.frame.domain.model.User
 import io.github.kmeret.frame.infrastructure.application.lifecycle.VMFragment
-import io.github.kmeret.frame.infrastructure.data.network.loadByUrl
-import io.github.kmeret.frame.infrastructure.presentation.extensions.attachAdapter
+import io.github.kmeret.frame.infrastructure.presentation.extensions.initList
 import io.github.kmeret.frame.infrastructure.presentation.extensions.isVisible
+import io.github.kmeret.frame.infrastructure.presentation.extensions.loadByUrl
 import io.github.kmeret.frame.infrastructure.presentation.list.ListAdapter
 import kotlinx.android.synthetic.main.fragment_followers.*
 import kotlinx.android.synthetic.main.template_user.view.*
@@ -29,7 +29,7 @@ class FollowersFragment : VMFragment<FollowersViewModel>() {
     override fun initLayout(savedInstanceState: Bundle?) {
         followers_refresh.setOnRefreshListener { viewModel.requestUserList() }
         followers_list.run {
-            attachAdapter(userAdapter)
+            initList(userAdapter)
             addItemDecoration(DividerItemDecoration(requireContext(), LinearLayout.VERTICAL))
         }
     }

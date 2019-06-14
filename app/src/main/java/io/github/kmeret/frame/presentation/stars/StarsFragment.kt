@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import io.github.kmeret.frame.R
 import io.github.kmeret.frame.domain.model.Repo
 import io.github.kmeret.frame.infrastructure.application.lifecycle.VMFragment
-import io.github.kmeret.frame.infrastructure.presentation.extensions.attachAdapter
+import io.github.kmeret.frame.infrastructure.presentation.extensions.initList
 import io.github.kmeret.frame.infrastructure.presentation.extensions.isVisible
 import io.github.kmeret.frame.infrastructure.presentation.list.ListAdapter
 import kotlinx.android.synthetic.main.fragment_stars.*
@@ -33,7 +33,7 @@ class StarsFragment : VMFragment<StarsViewModel>() {
     override fun initLayout(savedInstanceState: Bundle?) {
         stars_refresh.setOnRefreshListener { viewModel.requestStarredList() }
         stars_list.run {
-            attachAdapter(repoListAdapter)
+            initList(repoListAdapter)
             addItemDecoration(DividerItemDecoration(context, LinearLayout.VERTICAL))
         }
     }

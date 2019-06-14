@@ -1,4 +1,4 @@
-package io.github.kmeret.frame.infrastructure.presentation.extensions
+package io.github.kmeret.frame.infrastructure.data
 
 import android.text.SpannableStringBuilder
 

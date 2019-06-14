@@ -3,7 +3,7 @@ package io.github.kmeret.frame.infrastructure.presentation.list
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import io.github.kmeret.frame.infrastructure.presentation.extensions.inflate
+import io.github.kmeret.frame.infrastructure.presentation.extensions.inflateViewAsRoot
 
 class ListAdapter<T : ListItem>(
     private val templateResId: Int,
@@ -21,7 +21,7 @@ class ListAdapter<T : ListItem>(
     override fun getItemId(position: Int) = list[position].id
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
-        ListViewHolder(parent.inflate(templateResId))
+        ListViewHolder(parent.inflateViewAsRoot(templateResId))
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) =
         onBindItem.invoke(list[position], holder.rootView)

@@ -4,10 +4,10 @@ import android.os.Bundle
 import io.github.kmeret.frame.R
 import io.github.kmeret.frame.domain.model.Repo
 import io.github.kmeret.frame.infrastructure.application.lifecycle.VMFragment
-import io.github.kmeret.frame.infrastructure.data.network.loadByUrl
-import io.github.kmeret.frame.infrastructure.presentation.extensions.attachGridAdapter
+import io.github.kmeret.frame.infrastructure.presentation.extensions.initGrid
 import io.github.kmeret.frame.infrastructure.presentation.extensions.isGone
 import io.github.kmeret.frame.infrastructure.presentation.extensions.isVisible
+import io.github.kmeret.frame.infrastructure.presentation.extensions.loadByUrl
 import io.github.kmeret.frame.infrastructure.presentation.list.ListAdapter
 import io.github.kmeret.frame.presentation.repos.ReposViewModel
 import kotlinx.android.synthetic.main.fragment_profile.*
@@ -36,7 +36,7 @@ class ProfileFragment : VMFragment<ProfileViewModel>() {
             reposViewModel.requestRepoList()
         }
         profile_repo_list.run {
-            attachGridAdapter(reposAdapter)
+            initGrid(reposAdapter, 2)
             isNestedScrollingEnabled = false
         }
     }

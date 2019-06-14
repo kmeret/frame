@@ -1,7 +1,6 @@
 package io.github.kmeret.frame.infrastructure.presentation.extensions
 
-import android.view.*
-import androidx.core.view.GestureDetectorCompat
+import android.view.View
 
 fun View.onFocus(action: (hasFocus: Boolean) -> Unit) =
         setOnFocusChangeListener { _, hasFocus ->
@@ -18,20 +17,6 @@ fun View.onLongClick(action: () -> Unit) =
             action.invoke()
             return@onClick true
         }
-
-fun GestureDetectorCompat.onDoubleTap(action: () -> Unit) =
-        setOnDoubleTapListener(object : GestureDetector.OnDoubleTapListener {
-            override fun onDoubleTap(e: MotionEvent?): Boolean {
-                action.invoke()
-                return true
-            }
-
-            override fun onDoubleTapEvent(e: MotionEvent?) = false
-            override fun onSingleTapConfirmed(e: MotionEvent?) = false
-        })
-
-fun ViewGroup.inflate(layoutRes: Int, attach: Boolean = false): View =
-        LayoutInflater.from(context).inflate(layoutRes, this, attach)
 
 inline var View.isVisible: Boolean
     get() = visibility == View.VISIBLE

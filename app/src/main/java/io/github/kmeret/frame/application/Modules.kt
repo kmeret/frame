@@ -2,9 +2,10 @@ package io.github.kmeret.frame.application
 
 import androidx.room.Room
 import io.github.kmeret.frame.BuildConfig
+import io.github.kmeret.frame.data.github.GithubOpenApiFactory
 import io.github.kmeret.frame.data.github.GithubService
 import io.github.kmeret.frame.data.storage.Database
-import io.github.kmeret.frame.infrastructure.data.network.ApiFactory
+import io.github.kmeret.frame.infrastructure.application.permission.PermissionProvider
 import io.github.kmeret.frame.presentation.followers.FollowersViewModel
 import io.github.kmeret.frame.presentation.following.FollowingViewModel
 import io.github.kmeret.frame.presentation.main.MainViewModel
@@ -19,19 +20,20 @@ import ru.terrakok.cicerone.Router
 
 object Modules {
     fun getModuleList() = listOf(
+        appModule,
         networkModule,
         navigationModule,
         storageModule,
         viewModelModule
     )
 
+    private val appModule = module {
+        single { PermissionProvider(androidApplication()) }
+    }
+
     private val networkModule = module {
-        single {
-            ApiFactory<GithubService>().create(
-                GithubService::class.java,
-                "https://api.github.com/"
-            )
-        }
+        single { GithubOpenApiFactory() }
+        single { get<GithubOpenApiFactory>().create(GithubService::class.java) }
     }
 
     private val storageModule = module {
