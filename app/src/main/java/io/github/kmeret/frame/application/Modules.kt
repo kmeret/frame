@@ -20,7 +20,7 @@ import ru.terrakok.cicerone.Cicerone
 import ru.terrakok.cicerone.Router
 
 object Modules {
-    fun getModuleList() = listOf(
+    fun getList() = listOf(
         appModule,
         networkModule,
         storageModule,

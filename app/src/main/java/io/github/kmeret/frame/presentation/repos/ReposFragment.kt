@@ -1,6 +1,8 @@
 package io.github.kmeret.frame.presentation.repos
 
 import android.os.Bundle
+import android.widget.LinearLayout
+import androidx.recyclerview.widget.DividerItemDecoration
 import io.github.kmeret.frame.R
 import io.github.kmeret.frame.domain.model.Repo
 import io.github.kmeret.frame.infrastructure.application.lifecycle.VMFragment
@@ -26,7 +28,10 @@ class ReposFragment : VMFragment<ReposViewModel>() {
 
     override fun initLayout(savedInstanceState: Bundle?) {
         repos_refresh.setOnRefreshListener { viewModel.requestRepoList() }
-        repos_list.initList(reposAdapter)
+        repos_list.run {
+            initList(reposAdapter)
+            addItemDecoration(DividerItemDecoration(context, LinearLayout.VERTICAL))
+        }
     }
 
     override fun subscribeLiveData() {

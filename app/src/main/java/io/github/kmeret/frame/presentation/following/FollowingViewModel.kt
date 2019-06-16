@@ -1,18 +1,13 @@
 package io.github.kmeret.frame.presentation.following
 
 import androidx.lifecycle.MutableLiveData
-import io.github.kmeret.frame.data.github.GithubConfig
-import io.github.kmeret.frame.data.github.GithubOpenApi
+import io.github.kmeret.frame.domain.cases.UserInteractor
 import io.github.kmeret.frame.domain.model.User
 import io.github.kmeret.frame.infrastructure.application.lifecycle.BaseViewModel
 import io.github.kmeret.frame.infrastructure.application.lifecycle.onNext
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 class FollowingViewModel(
-    private val githubOpenApi: GithubOpenApi
+    private val userInteractor: UserInteractor
 ) : BaseViewModel() {
 
     val followingList = MutableLiveData<List<User>>()
@@ -26,11 +21,12 @@ class FollowingViewModel(
     }
 
     fun requestFollowingList() {
-        CoroutineScope(Dispatchers.IO).launch {
-            val githubUserList = githubOpenApi.getFollowingList(GithubConfig.userName)
-            withContext(Dispatchers.Main) {
-                followingList.onNext(githubUserList.map { it.map() })
-            }
+        safeSubscribe {
+            userInteractor.requestFollowingList().execute(
+                isLoading = { isLoading.onNext(it) },
+                onSuccess = { followingList.onNext(it) },
+                onError = { errors.onNext(it) }
+            )
         }
     }
 

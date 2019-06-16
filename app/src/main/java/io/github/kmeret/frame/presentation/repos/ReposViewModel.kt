@@ -1,18 +1,13 @@
 package io.github.kmeret.frame.presentation.repos
 
 import androidx.lifecycle.MutableLiveData
-import io.github.kmeret.frame.data.github.GithubConfig
-import io.github.kmeret.frame.data.github.GithubOpenApi
+import io.github.kmeret.frame.domain.cases.UserInteractor
 import io.github.kmeret.frame.domain.model.Repo
 import io.github.kmeret.frame.infrastructure.application.lifecycle.BaseViewModel
 import io.github.kmeret.frame.infrastructure.application.lifecycle.onNext
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 class ReposViewModel(
-    private val githubOpenApi: GithubOpenApi
+    private val userInteractor: UserInteractor
 ) : BaseViewModel() {
 
     val repoList = MutableLiveData<List<Repo>>()
@@ -25,12 +20,13 @@ class ReposViewModel(
 
     }
 
-    fun requestRepoList()  {
-        CoroutineScope(Dispatchers.IO).launch {
-            val githubRepoList = githubOpenApi.getRepoList(GithubConfig.userName)
-            withContext(Dispatchers.Main) {
-                repoList.onNext(githubRepoList.map { it.map() })
-            }
+    fun requestRepoList() {
+        safeSubscribe {
+            userInteractor.requestRepoList().execute(
+                isLoading = { isLoading.onNext(it) },
+                onSuccess = { repoList.onNext(it) },
+                onError = { errors.onNext(it) }
+            )
         }
     }
 

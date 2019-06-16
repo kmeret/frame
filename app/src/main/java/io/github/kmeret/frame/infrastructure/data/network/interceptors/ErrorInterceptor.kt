@@ -7,7 +7,6 @@ import okhttp3.Interceptor
 import okhttp3.Response
 import java.io.IOException
 import java.net.SocketTimeoutException
-import java.util.concurrent.TimeoutException
 
 class ErrorInterceptor : Interceptor {
 
@@ -15,15 +14,14 @@ class ErrorInterceptor : Interceptor {
 
         val response = try {
             chain.proceed(chain.request())
-        } catch (th: Throwable) {
+        } catch (th: IOException) {
             if (BuildConfig.DEBUG) {
                 Log.d("OkHttp", th.localizedMessage)
             }
 
             when (th) {
                 is SocketTimeoutException -> throw TimeoutException()
-                is IOException -> throw NetworkException()
-                else -> throw th
+                else -> throw NetworkException()
             }
         }
 
@@ -31,8 +29,7 @@ class ErrorInterceptor : Interceptor {
 
         val httpCode = response.code()
         val body = response.body()?.string()
-        val serverException =
-            ServerException(httpCode, description = body)
+        val serverException = ServerException(httpCode, description = body)
 
         if (BuildConfig.DEBUG) {
             Log.d("OkHttp", serverException.toString())
@@ -48,5 +45,4 @@ class ErrorInterceptor : Interceptor {
             else -> serverException
         }
     }
-
 }
