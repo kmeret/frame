@@ -6,6 +6,11 @@ import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
 
 class App : BaseApp() {
+
+    companion object {
+        const val GITHUB_USER = "kmeret"
+    }
+
     override fun onInit() {
         initDI()
     }

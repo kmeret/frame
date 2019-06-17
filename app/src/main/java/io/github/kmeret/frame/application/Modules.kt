@@ -2,8 +2,8 @@ package io.github.kmeret.frame.application
 
 import androidx.room.Room
 import io.github.kmeret.frame.BuildConfig
-import io.github.kmeret.frame.data.github.GithubOpenApi
-import io.github.kmeret.frame.data.github.GithubOpenApiFactory
+import io.github.kmeret.frame.data.network.github.GithubOpenApi
+import io.github.kmeret.frame.data.network.github.GithubOpenApiFactory
 import io.github.kmeret.frame.data.storage.Database
 import io.github.kmeret.frame.domain.cases.UserInteractor
 import io.github.kmeret.frame.infrastructure.application.permission.PermissionProvider

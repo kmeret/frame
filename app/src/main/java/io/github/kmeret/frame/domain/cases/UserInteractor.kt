@@ -1,7 +1,7 @@
 package io.github.kmeret.frame.domain.cases
 
-import io.github.kmeret.frame.data.github.GithubConfig
-import io.github.kmeret.frame.data.github.GithubOpenApi
+import io.github.kmeret.frame.application.App
+import io.github.kmeret.frame.data.network.github.GithubOpenApi
 import io.github.kmeret.frame.domain.model.Profile
 import io.github.kmeret.frame.domain.model.Repo
 import io.github.kmeret.frame.domain.model.User
@@ -11,7 +11,7 @@ class UserInteractor(
     private val githubOpenApi: GithubOpenApi
 ) {
 
-    private val username = GithubConfig.userName
+    private val username = App.GITHUB_USER
 
     fun requestProfile() = object : CoroutineUseCase<Profile>() {
         override suspend fun asyncRequest(): Profile = githubOpenApi.getProfile(username).map().map()
