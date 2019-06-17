@@ -1,4 +1,4 @@
-package io.github.kmeret.frame.data.network.github.model
+package io.github.kmeret.frame.data.network.model
 
 import com.google.gson.annotations.SerializedName
 

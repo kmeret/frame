@@ -1,4 +1,4 @@
-package io.github.kmeret.frame.data.network.github
+package io.github.kmeret.frame.data.network.open
 
 import io.github.kmeret.frame.BuildConfig
 import io.github.kmeret.frame.infrastructure.data.network.ApiFactory

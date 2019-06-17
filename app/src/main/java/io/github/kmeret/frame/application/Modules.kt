@@ -2,11 +2,15 @@ package io.github.kmeret.frame.application
 
 import androidx.room.Room
 import io.github.kmeret.frame.BuildConfig
-import io.github.kmeret.frame.data.network.github.GithubOpenApi
-import io.github.kmeret.frame.data.network.github.GithubOpenApiFactory
+import io.github.kmeret.frame.data.network.login.GithubAuthApi
+import io.github.kmeret.frame.data.network.open.GithubOpenApi
+import io.github.kmeret.frame.data.network.open.GithubOpenApiFactory
+import io.github.kmeret.frame.data.network.user.GithubUserApiFactory
+import io.github.kmeret.frame.data.repos.AuthDataRepo
 import io.github.kmeret.frame.data.repos.UserDataRepo
 import io.github.kmeret.frame.data.storage.Database
 import io.github.kmeret.frame.domain.cases.UserInteractor
+import io.github.kmeret.frame.domain.repos.AuthRepo
 import io.github.kmeret.frame.domain.repos.UserRepo
 import io.github.kmeret.frame.infrastructure.application.permission.PermissionProvider
 import io.github.kmeret.frame.presentation.followers.FollowersViewModel
@@ -39,9 +43,14 @@ object Modules {
     private val networkModule = module {
         single { GithubOpenApiFactory() }
         single { get<GithubOpenApiFactory>().create(GithubOpenApi::class.java) }
+        single { get<GithubOpenApiFactory>().create(GithubAuthApi::class.java) }
+
+        single { GithubUserApiFactory(get()) }
+        single { get<GithubUserApiFactory>().create(GithubAuthApi::class.java) }
     }
 
     private val dataModule = module {
+        single<AuthRepo> { AuthDataRepo(get()) }
         single<UserRepo> { UserDataRepo(get()) }
     }
 

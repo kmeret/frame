@@ -1,7 +1,7 @@
 package io.github.kmeret.frame.data.repos
 
 import io.github.kmeret.frame.data.converters.GithubConverter
-import io.github.kmeret.frame.data.network.github.GithubOpenApi
+import io.github.kmeret.frame.data.network.open.GithubOpenApi
 import io.github.kmeret.frame.domain.model.Profile
 import io.github.kmeret.frame.domain.model.Repo
 import io.github.kmeret.frame.domain.model.User

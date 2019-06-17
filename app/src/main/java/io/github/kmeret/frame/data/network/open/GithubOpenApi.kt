@@ -1,8 +1,8 @@
-package io.github.kmeret.frame.data.network.github
+package io.github.kmeret.frame.data.network.open
 
-import io.github.kmeret.frame.data.network.github.model.GithubProfile
-import io.github.kmeret.frame.data.network.github.model.GithubRepo
-import io.github.kmeret.frame.data.network.github.model.GithubUser
+import io.github.kmeret.frame.data.network.model.GithubProfile
+import io.github.kmeret.frame.data.network.model.GithubRepo
+import io.github.kmeret.frame.data.network.model.GithubUser
 import retrofit2.http.GET
 import retrofit2.http.Path
 

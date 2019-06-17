@@ -1,8 +1,8 @@
 package io.github.kmeret.frame.data.converters
 
-import io.github.kmeret.frame.data.network.github.model.GithubProfile
-import io.github.kmeret.frame.data.network.github.model.GithubRepo
-import io.github.kmeret.frame.data.network.github.model.GithubUser
+import io.github.kmeret.frame.data.network.model.GithubProfile
+import io.github.kmeret.frame.data.network.model.GithubRepo
+import io.github.kmeret.frame.data.network.model.GithubUser
 import io.github.kmeret.frame.domain.model.Profile
 import io.github.kmeret.frame.domain.model.Repo
 import io.github.kmeret.frame.domain.model.User
