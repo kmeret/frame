@@ -18,7 +18,7 @@ interface GithubOpenApi {
     suspend fun getRepoList(@Path("username") username: String): List<GithubRepo>
 
     @GET("/users/{username}/followers")
-    suspend fun getFollowersList(@Path("username") username: String): List<GithubUser>
+    suspend fun getFollowerList(@Path("username") username: String): List<GithubUser>
 
     @GET("/users/{username}/following")
     suspend fun getFollowingList(@Path("username") username: String): List<GithubUser>

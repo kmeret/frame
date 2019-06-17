@@ -10,7 +10,7 @@ class FollowersViewModel(
     private val userInteractor: UserInteractor
 ) : BaseViewModel() {
 
-    val followersList = MutableLiveData<List<User>>()
+    val followerList = MutableLiveData<List<User>>()
 
     override fun onInit() {
 
@@ -20,11 +20,11 @@ class FollowersViewModel(
 
     }
 
-    fun requestUserList() {
+    fun requestFollowerList() {
         safeSubscribe {
-            userInteractor.requestFollowersList().execute(
+            userInteractor.requestFollowerList().execute(
                 isLoading = { isLoading.onNext(it) },
-                onSuccess = { followersList.onNext(it) },
+                onSuccess = { followerList.onNext(it) },
                 onError = { errors.onNext(it) }
             )
         }

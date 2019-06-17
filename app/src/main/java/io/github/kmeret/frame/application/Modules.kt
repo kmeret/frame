@@ -4,8 +4,10 @@ import androidx.room.Room
 import io.github.kmeret.frame.BuildConfig
 import io.github.kmeret.frame.data.network.github.GithubOpenApi
 import io.github.kmeret.frame.data.network.github.GithubOpenApiFactory
+import io.github.kmeret.frame.data.repos.UserDataRepo
 import io.github.kmeret.frame.data.storage.Database
 import io.github.kmeret.frame.domain.cases.UserInteractor
+import io.github.kmeret.frame.domain.repos.UserRepo
 import io.github.kmeret.frame.infrastructure.application.permission.PermissionProvider
 import io.github.kmeret.frame.presentation.followers.FollowersViewModel
 import io.github.kmeret.frame.presentation.following.FollowingViewModel
@@ -23,6 +25,7 @@ object Modules {
     fun getList() = listOf(
         appModule,
         networkModule,
+        dataModule,
         storageModule,
         navigationModule,
         domainModule,
@@ -36,6 +39,10 @@ object Modules {
     private val networkModule = module {
         single { GithubOpenApiFactory() }
         single { get<GithubOpenApiFactory>().create(GithubOpenApi::class.java) }
+    }
+
+    private val dataModule = module {
+        single<UserRepo> { UserDataRepo(get()) }
     }
 
     private val storageModule = module {

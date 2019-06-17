@@ -27,7 +27,7 @@ class FollowersFragment : VMFragment<FollowersViewModel>() {
         }
 
     override fun initLayout(savedInstanceState: Bundle?) {
-        followers_refresh.setOnRefreshListener { viewModel.requestUserList() }
+        followers_refresh.setOnRefreshListener { viewModel.requestFollowerList() }
         followers_list.run {
             initList(userAdapter)
             addItemDecoration(DividerItemDecoration(requireContext(), LinearLayout.VERTICAL))
@@ -36,7 +36,7 @@ class FollowersFragment : VMFragment<FollowersViewModel>() {
 
     override fun subscribeLiveData() {
         viewModel.isLoading.subscribe { followers_refresh.isRefreshing = it }
-        viewModel.followersList.subscribe {
+        viewModel.followerList.subscribe {
             followers_list.isVisible = it.isNotEmpty()
             followers_empty.isVisible = it.isEmpty()
             userAdapter.updateList(it)
@@ -45,6 +45,6 @@ class FollowersFragment : VMFragment<FollowersViewModel>() {
 
     override fun onResume() {
         super.onResume()
-        viewModel.requestUserList()
+        viewModel.requestFollowerList()
     }
 }
