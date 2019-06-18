@@ -33,6 +33,7 @@
 			android:name="io.github.kmeret.frame.presentation.main.MainActivity"
 			android:screenOrientation="portrait"
 			android:launchMode="singleTop"
+			android:windowSoftInputMode="adjustResize"
 			/>
 	
 	</application>

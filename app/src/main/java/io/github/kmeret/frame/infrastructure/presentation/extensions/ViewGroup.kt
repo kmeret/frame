@@ -7,7 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.StyleableRes
 
-fun ViewGroup.inflateViewAsRoot(layoutResId: Int): View = LayoutInflater.from(context).inflate(layoutResId, this, false)
+fun ViewGroup.inflateViewAsRoot(layoutResId: Int): View = View.inflate(context, layoutResId, this)
+
+fun ViewGroup.inflateView(layoutResId: Int): View = LayoutInflater.from(context).inflate(layoutResId, this, false)
 
 fun ViewGroup.obtainAttrs(
     attrs: AttributeSet?, @StyleableRes attrsId: IntArray,

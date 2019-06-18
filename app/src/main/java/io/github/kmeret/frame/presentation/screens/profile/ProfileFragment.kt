@@ -11,7 +11,7 @@ import io.github.kmeret.frame.infrastructure.presentation.extensions.loadByUrl
 import io.github.kmeret.frame.infrastructure.presentation.list.ListAdapter
 import io.github.kmeret.frame.presentation.screens.repos.ReposViewModel
 import kotlinx.android.synthetic.main.fragment_profile.*
-import kotlinx.android.synthetic.main.template_repo_profile.view.*
+import kotlinx.android.synthetic.main.item_repo_profile.view.*
 import org.koin.android.viewmodel.ext.android.sharedViewModel
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -22,7 +22,7 @@ class ProfileFragment : VMFragment<ProfileViewModel>() {
 
     private val reposViewModel: ReposViewModel by sharedViewModel()
 
-    private val reposAdapter = ListAdapter<Repo>(R.layout.template_repo_profile) { repo, repoView ->
+    private val reposAdapter = ListAdapter<Repo>(R.layout.item_repo_profile) { repo, repoView ->
         repoView.run {
             repo_profile_name.text = repo.name
             repo_profile_description.text = repo.description

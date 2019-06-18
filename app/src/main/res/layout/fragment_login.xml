@@ -1,19 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
 	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
-	xmlns:app="http://schemas.android.com/apk/res-auto"
 	>
 	
+	<androidx.constraintlayout.widget.Group
+		android:id="@+id/login_content"
+		android:layout_width="0dp"
+		android:layout_height="0dp"
+		app:constraint_referenced_ids="login_logo,login_username,login_password,login_button"
+		/>
+	
+	<io.github.kmeret.frame.presentation.widgets.AppProgress
+		android:id="@+id/login_progress"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:visibility="gone"
+		app:layout_constraintTop_toTopOf="parent"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		/>
+	
 	<androidx.appcompat.widget.AppCompatImageView
+		android:id="@+id/login_logo"
 		android:layout_width="280dp"
 		android:layout_height="100dp"
-		android:layout_marginTop="100dp"
 		android:src="@drawable/ic_github_logo"
 		app:layout_constraintTop_toTopOf="parent"
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintBottom_toTopOf="@id/login_username"
+		app:layout_constraintVertical_chainStyle="packed"
 		/>
-
+	
+	<io.github.kmeret.frame.presentation.widgets.AppTextField
+		android:id="@+id/login_username"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="32dp"
+		app:hint="@string/login"
+		app:layout_constraintTop_toBottomOf="@id/login_logo"
+		app:layout_constraintStart_toStartOf="@id/login_logo"
+		app:layout_constraintEnd_toEndOf="@id/login_logo"
+		app:layout_constraintBottom_toTopOf="@id/login_password"
+		/>
+	
+	<io.github.kmeret.frame.presentation.widgets.AppTextField
+		android:id="@+id/login_password"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="16dp"
+		app:hint="@string/password"
+		app:layout_constraintTop_toBottomOf="@id/login_username"
+		app:layout_constraintStart_toStartOf="@id/login_username"
+		app:layout_constraintEnd_toEndOf="@id/login_username"
+		app:layout_constraintBottom_toTopOf="@id/login_button"
+		/>
+	
+	<io.github.kmeret.frame.presentation.widgets.AppButton
+		android:id="@+id/login_button"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="24dp"
+		app:title="@string/sign_in"
+		app:layout_constraintTop_toBottomOf="@id/login_password"
+		app:layout_constraintStart_toStartOf="@id/login_password"
+		app:layout_constraintEnd_toEndOf="@id/login_password"
+		app:layout_constraintBottom_toBottomOf="parent"
+		/>
+	
 </androidx.constraintlayout.widget.ConstraintLayout>

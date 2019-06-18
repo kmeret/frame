@@ -11,7 +11,7 @@ import io.github.kmeret.frame.infrastructure.presentation.extensions.isVisible
 import io.github.kmeret.frame.infrastructure.presentation.extensions.loadByUrl
 import io.github.kmeret.frame.infrastructure.presentation.list.ListAdapter
 import kotlinx.android.synthetic.main.fragment_followers.*
-import kotlinx.android.synthetic.main.template_user.view.*
+import kotlinx.android.synthetic.main.item_user.view.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class FollowersFragment : VMFragment<FollowersViewModel>() {
@@ -19,7 +19,7 @@ class FollowersFragment : VMFragment<FollowersViewModel>() {
 
     override val viewModel: FollowersViewModel by viewModel()
 
-    private val userAdapter: ListAdapter<User> = ListAdapter(R.layout.template_user) { user, userRootView ->
+    private val userAdapter: ListAdapter<User> = ListAdapter(R.layout.item_user) { user, userRootView ->
             userRootView.run {
                 user_avatar.loadByUrl(user.avatarUrl)
                 user_name.text = user.login

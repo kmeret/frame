@@ -4,6 +4,7 @@ import android.os.Bundle
 import io.github.kmeret.frame.R
 import io.github.kmeret.frame.infrastructure.application.lifecycle.VMCommand
 import io.github.kmeret.frame.infrastructure.application.navigation.NavActivity
+import io.github.kmeret.frame.infrastructure.presentation.extensions.isVisible
 import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -21,7 +22,9 @@ class MainActivity : NavActivity<MainViewModel>() {
     }
 
     override fun subscribeLiveData() {
-
+        viewModel.isUserSignIn.subscribe {
+            main_bottom_nav_bar.isVisible = it
+        }
     }
 
     override fun onCommandReceived(command: VMCommand) {

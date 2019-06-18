@@ -21,12 +21,10 @@ class ProfileViewModel(
     }
 
     fun requestProfile() {
-        safeSubscribe {
-            userInteractor.requestProfile().execute(
-                isLoading = { isLoading.onNext(it) },
-                onSuccess = { networkProfile.onNext(it) },
-                onError = { errors.onNext(it) }
-            )
+        userInteractor::requestProfile.subscribe { result ->
+            handleResult<Profile>(result) {
+                networkProfile.onNext(it)
+            }
         }
     }
 }

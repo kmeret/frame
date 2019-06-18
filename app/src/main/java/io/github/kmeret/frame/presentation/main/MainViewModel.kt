@@ -1,5 +1,6 @@
 package io.github.kmeret.frame.presentation.main
 
+import androidx.lifecycle.MutableLiveData
 import io.github.kmeret.frame.R
 import io.github.kmeret.frame.application.Screens
 import io.github.kmeret.frame.infrastructure.application.lifecycle.BaseViewModel
@@ -9,6 +10,8 @@ import ru.terrakok.cicerone.Router
 class MainViewModel(
     private val router: Router
 ) : BaseViewModel() {
+
+    val isUserSignIn = MutableLiveData<Boolean>()
 
     override fun onInit() = router.newRootScreen(Screens.ProfileScreen())
 

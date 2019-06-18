@@ -10,7 +10,7 @@ import io.github.kmeret.frame.infrastructure.presentation.extensions.initList
 import io.github.kmeret.frame.infrastructure.presentation.extensions.isVisible
 import io.github.kmeret.frame.infrastructure.presentation.list.ListAdapter
 import kotlinx.android.synthetic.main.fragment_stars.*
-import kotlinx.android.synthetic.main.template_repo_starred.view.*
+import kotlinx.android.synthetic.main.item_repo_starred.view.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class StarsFragment : VMFragment<StarsViewModel>() {
@@ -18,7 +18,7 @@ class StarsFragment : VMFragment<StarsViewModel>() {
 
     override val viewModel: StarsViewModel by viewModel()
 
-    private val repoListAdapter = ListAdapter<Repo>(R.layout.template_repo_starred) { repo, repoRootView ->
+    private val repoListAdapter = ListAdapter<Repo>(R.layout.item_repo_starred) { repo, repoRootView ->
         repoRootView.also {
             it.repo_starred_title.text = repo.fullName
             it.repo_description.text = repo.description

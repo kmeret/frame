@@ -18,5 +18,8 @@
 	<string name="starred_repos_not_found">This user does not have any starred repositories yet.</string>
 	<string name="following_not_found">This user isn’t following anybody.</string>
 	<string name="profile_is_empty">Profile is empty!</string>
-	
+	<string name="login">Login</string>
+	<string name="password">Password</string>
+	<string name="sign_in">Sign in</string>
+
 </resources>

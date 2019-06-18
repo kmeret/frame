@@ -13,9 +13,7 @@ class UserInteractor(
 
     private val username = App.GITHUB_USER
 
-    fun requestProfile() = object : CoroutineUseCase<Profile>() {
-        override suspend fun asyncRequest(): Profile = userRepo.getProfile(username)
-    }
+    suspend fun requestProfile(): Profile = userRepo.getProfile(username)
 
     fun requestRepoList() = object : CoroutineUseCase<List<Repo>>() {
         override suspend fun asyncRequest(): List<Repo> = userRepo.getRepoList(username)

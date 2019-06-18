@@ -1,9 +1,11 @@
 package io.github.kmeret.frame.infrastructure.presentation.layout
 
 import android.os.Bundle
+import android.view.Gravity
 import android.widget.TextView
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
+import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.content.ContextCompat
 import androidx.core.widget.TextViewCompat
 import com.google.android.material.snackbar.Snackbar
@@ -32,9 +34,12 @@ abstract class LayoutActivity : AppCompatActivity(), LayoutHolder {
     fun showError(text: String) = snackBar.setText(text).show()
 
     private fun createErrorSnackBar(): Snackbar {
-        val errorSnackBar = Snackbar.make(findViewById(coordinatorLayoutId), "", 3000)
+        val errorSnackBar = Snackbar.make(findViewById(coordinatorLayoutId), "", Snackbar.LENGTH_SHORT)
         val snackBarView = errorSnackBar.view.apply {
             setBackgroundColor(ContextCompat.getColor(context, R.color.red))
+            layoutParams = (layoutParams as CoordinatorLayout.LayoutParams).apply {
+                gravity = Gravity.TOP
+            }
         }
         val textView = snackBarView.findViewById(R.id.snackbar_text) as TextView
         TextViewCompat.setTextAppearance(textView, R.style.AppSnackBarText)
