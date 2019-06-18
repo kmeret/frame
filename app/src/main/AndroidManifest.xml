@@ -21,7 +21,7 @@
 		<activity-alias
 			android:name=".Launcher"
 			android:label="@string/app_name"
-			android:targetActivity=".presentation.main.MainActivity"
+			android:targetActivity="io.github.kmeret.frame.presentation.main.MainActivity"
 			>
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN"/>
@@ -30,7 +30,7 @@
 		</activity-alias>
 		
 		<activity
-			android:name=".presentation.main.MainActivity"
+			android:name="io.github.kmeret.frame.presentation.main.MainActivity"
 			android:screenOrientation="portrait"
 			android:launchMode="singleTop"
 			/>

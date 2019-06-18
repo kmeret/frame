@@ -1,4 +1,4 @@
-package io.github.kmeret.frame.presentation.repos
+package io.github.kmeret.frame.presentation.screens.repos
 
 import androidx.lifecycle.MutableLiveData
 import io.github.kmeret.frame.domain.cases.UserInteractor

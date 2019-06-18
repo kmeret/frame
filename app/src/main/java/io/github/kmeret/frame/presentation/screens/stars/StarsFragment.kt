@@ -1,4 +1,4 @@
-package io.github.kmeret.frame.presentation.stars
+package io.github.kmeret.frame.presentation.screens.stars
 
 import android.os.Bundle
 import android.widget.LinearLayout

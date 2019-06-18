@@ -1,16 +1,16 @@
-package io.github.kmeret.frame.presentation.followers
+package io.github.kmeret.frame.presentation.screens.profile
 
 import androidx.lifecycle.MutableLiveData
 import io.github.kmeret.frame.domain.cases.UserInteractor
-import io.github.kmeret.frame.domain.model.User
+import io.github.kmeret.frame.domain.model.Profile
 import io.github.kmeret.frame.infrastructure.application.lifecycle.BaseViewModel
 import io.github.kmeret.frame.infrastructure.application.lifecycle.onNext
 
-class FollowersViewModel(
+class ProfileViewModel(
     private val userInteractor: UserInteractor
 ) : BaseViewModel() {
 
-    val followerList = MutableLiveData<List<User>>()
+    val networkProfile = MutableLiveData<Profile>()
 
     override fun onInit() {
 
@@ -20,14 +20,13 @@ class FollowersViewModel(
 
     }
 
-    fun requestFollowerList() {
+    fun requestProfile() {
         safeSubscribe {
-            userInteractor.requestFollowerList().execute(
+            userInteractor.requestProfile().execute(
                 isLoading = { isLoading.onNext(it) },
-                onSuccess = { followerList.onNext(it) },
+                onSuccess = { networkProfile.onNext(it) },
                 onError = { errors.onNext(it) }
             )
         }
     }
-
 }

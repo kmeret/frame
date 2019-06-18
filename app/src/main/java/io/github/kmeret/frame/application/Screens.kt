@@ -1,13 +1,17 @@
 package io.github.kmeret.frame.application
 
-import io.github.kmeret.frame.presentation.followers.FollowersFragment
-import io.github.kmeret.frame.presentation.following.FollowingFragment
-import io.github.kmeret.frame.presentation.profile.ProfileFragment
-import io.github.kmeret.frame.presentation.repos.ReposFragment
-import io.github.kmeret.frame.presentation.stars.StarsFragment
+import io.github.kmeret.frame.presentation.screens.auth.LoginFragment
+import io.github.kmeret.frame.presentation.screens.followers.FollowersFragment
+import io.github.kmeret.frame.presentation.screens.following.FollowingFragment
+import io.github.kmeret.frame.presentation.screens.profile.ProfileFragment
+import io.github.kmeret.frame.presentation.screens.repos.ReposFragment
+import io.github.kmeret.frame.presentation.screens.stars.StarsFragment
 import ru.terrakok.cicerone.android.support.SupportAppScreen
 
 object Screens {
+    class LoginScreen : SupportAppScreen() {
+        override fun getFragment() = LoginFragment()
+    }
     class ProfileScreen : SupportAppScreen() {
         override fun getFragment() = ProfileFragment()
     }

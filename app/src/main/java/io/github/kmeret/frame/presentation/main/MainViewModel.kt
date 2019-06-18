@@ -1,7 +1,9 @@
 package io.github.kmeret.frame.presentation.main
 
+import io.github.kmeret.frame.R
 import io.github.kmeret.frame.application.Screens
 import io.github.kmeret.frame.infrastructure.application.lifecycle.BaseViewModel
+import io.github.kmeret.frame.infrastructure.application.lifecycle.VMCommand
 import ru.terrakok.cicerone.Router
 
 class MainViewModel(
@@ -12,13 +14,19 @@ class MainViewModel(
 
     override fun onBackPressed() = router.finishChain()
 
-    fun onProfilePressed()  = router.newRootScreen(Screens.ProfileScreen())
+    fun onCommandReceived(command: VMCommand) {
 
-    fun onReposPressed() = router.newRootScreen(Screens.ReposScreen())
+    }
 
-    fun onStarsPressed() = router.newRootScreen(Screens.StarsScreen())
-
-    fun onFollowersPressed() = router.newRootScreen(Screens.FollowersScreen())
-
-    fun onFollowingPressed() = router.newRootScreen(Screens.FollowingScreen())
+    fun onBottomNavBarPressed(itemId: Int) {
+        val rootScreen = when (itemId) {
+            R.id.nav_profile -> Screens.ProfileScreen()
+            R.id.nav_repos -> Screens.ReposScreen()
+            R.id.nav_stars -> Screens.StarsScreen()
+            R.id.nav_followers -> Screens.FollowersScreen()
+            R.id.nav_following -> Screens.FollowingScreen()
+            else -> return
+        }
+        router.newRootScreen(rootScreen)
+    }
 }

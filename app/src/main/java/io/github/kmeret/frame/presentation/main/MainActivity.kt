@@ -17,7 +17,7 @@ class MainActivity : NavActivity<MainViewModel>() {
     override val viewModel: MainViewModel by viewModel()
 
     override fun initLayout(savedInstanceState: Bundle?) {
-        main_bottom_nav_bar.setOnNavigationItemSelectedListener { onBottomNavItemPressed(it.itemId); true }
+        main_bottom_nav_bar.setOnNavigationItemSelectedListener { viewModel.onBottomNavBarPressed(it.itemId); true }
     }
 
     override fun subscribeLiveData() {
@@ -25,17 +25,6 @@ class MainActivity : NavActivity<MainViewModel>() {
     }
 
     override fun onCommandReceived(command: VMCommand) {
-
-    }
-
-    private fun onBottomNavItemPressed(itemId: Int) {
-        return when (itemId) {
-            R.id.nav_profile -> viewModel.onProfilePressed()
-            R.id.nav_repos -> viewModel.onReposPressed()
-            R.id.nav_stars -> viewModel.onStarsPressed()
-            R.id.nav_followers -> viewModel.onFollowersPressed()
-            R.id.nav_following -> viewModel.onFollowingPressed()
-            else -> return
-        }
+        viewModel.onCommandReceived(command)
     }
 }

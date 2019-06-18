@@ -12,12 +12,13 @@ import io.github.kmeret.frame.domain.repos.AuthRepo
 import io.github.kmeret.frame.domain.repos.UserRepo
 import io.github.kmeret.frame.infrastructure.application.permission.PermissionProvider
 import io.github.kmeret.frame.infrastructure.data.storage.RealmDao
-import io.github.kmeret.frame.presentation.followers.FollowersViewModel
-import io.github.kmeret.frame.presentation.following.FollowingViewModel
 import io.github.kmeret.frame.presentation.main.MainViewModel
-import io.github.kmeret.frame.presentation.profile.ProfileViewModel
-import io.github.kmeret.frame.presentation.repos.ReposViewModel
-import io.github.kmeret.frame.presentation.stars.StarsViewModel
+import io.github.kmeret.frame.presentation.screens.auth.LoginViewModel
+import io.github.kmeret.frame.presentation.screens.followers.FollowersViewModel
+import io.github.kmeret.frame.presentation.screens.following.FollowingViewModel
+import io.github.kmeret.frame.presentation.screens.profile.ProfileViewModel
+import io.github.kmeret.frame.presentation.screens.repos.ReposViewModel
+import io.github.kmeret.frame.presentation.screens.stars.StarsViewModel
 import org.koin.android.ext.koin.androidApplication
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -69,6 +70,7 @@ object Modules {
 
     private val viewModelModule = module {
         viewModel { MainViewModel(get()) }
+        viewModel { LoginViewModel() }
         viewModel { ProfileViewModel(get()) }
         viewModel { ReposViewModel(get()) }
         viewModel { StarsViewModel(get()) }

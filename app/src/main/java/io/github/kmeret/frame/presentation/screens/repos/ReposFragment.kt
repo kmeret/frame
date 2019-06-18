@@ -1,4 +1,4 @@
-package io.github.kmeret.frame.presentation.repos
+package io.github.kmeret.frame.presentation.screens.repos
 
 import android.os.Bundle
 import android.widget.LinearLayout

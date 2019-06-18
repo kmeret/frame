@@ -1,4 +1,4 @@
-package io.github.kmeret.frame.presentation.profile
+package io.github.kmeret.frame.presentation.screens.profile
 
 import android.os.Bundle
 import io.github.kmeret.frame.R
@@ -9,7 +9,7 @@ import io.github.kmeret.frame.infrastructure.presentation.extensions.isGone
 import io.github.kmeret.frame.infrastructure.presentation.extensions.isVisible
 import io.github.kmeret.frame.infrastructure.presentation.extensions.loadByUrl
 import io.github.kmeret.frame.infrastructure.presentation.list.ListAdapter
-import io.github.kmeret.frame.presentation.repos.ReposViewModel
+import io.github.kmeret.frame.presentation.screens.repos.ReposViewModel
 import kotlinx.android.synthetic.main.fragment_profile.*
 import kotlinx.android.synthetic.main.template_repo_profile.view.*
 import org.koin.android.viewmodel.ext.android.sharedViewModel

@@ -1,16 +1,16 @@
-package io.github.kmeret.frame.presentation.profile
+package io.github.kmeret.frame.presentation.screens.stars
 
 import androidx.lifecycle.MutableLiveData
 import io.github.kmeret.frame.domain.cases.UserInteractor
-import io.github.kmeret.frame.domain.model.Profile
+import io.github.kmeret.frame.domain.model.Repo
 import io.github.kmeret.frame.infrastructure.application.lifecycle.BaseViewModel
 import io.github.kmeret.frame.infrastructure.application.lifecycle.onNext
 
-class ProfileViewModel(
+class StarsViewModel(
     private val userInteractor: UserInteractor
 ) : BaseViewModel() {
 
-    val networkProfile = MutableLiveData<Profile>()
+    val starredList = MutableLiveData<List<Repo>>()
 
     override fun onInit() {
 
@@ -20,13 +20,14 @@ class ProfileViewModel(
 
     }
 
-    fun requestProfile() {
+    fun requestStarredList() {
         safeSubscribe {
-            userInteractor.requestProfile().execute(
+            userInteractor.requestStarredList().execute(
                 isLoading = { isLoading.onNext(it) },
-                onSuccess = { networkProfile.onNext(it) },
+                onSuccess = { starredList.onNext(it) },
                 onError = { errors.onNext(it) }
             )
         }
     }
+
 }
