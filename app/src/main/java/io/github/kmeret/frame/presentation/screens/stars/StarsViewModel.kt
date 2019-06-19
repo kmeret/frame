@@ -21,13 +21,7 @@ class StarsViewModel(
     }
 
     fun requestStarredList() {
-        safeSubscribe {
-            userInteractor.requestStarredList().execute(
-                isLoading = { isLoading.onNext(it) },
-                onSuccess = { starredList.onNext(it) },
-                onError = { errors.onNext(it) }
-            )
-        }
+        userInteractor::requestStarredList.subscribe { starredList.onNext(it) }
     }
 
 }

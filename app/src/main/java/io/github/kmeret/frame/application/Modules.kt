@@ -7,6 +7,7 @@ import io.github.kmeret.frame.data.network.user.GithubUserApi
 import io.github.kmeret.frame.data.network.user.GithubUserApiFactory
 import io.github.kmeret.frame.data.repos.AuthDataRepo
 import io.github.kmeret.frame.data.repos.UserDataRepo
+import io.github.kmeret.frame.domain.cases.AuthInteractor
 import io.github.kmeret.frame.domain.cases.UserInteractor
 import io.github.kmeret.frame.domain.repos.AuthRepo
 import io.github.kmeret.frame.domain.repos.UserRepo
@@ -65,12 +66,13 @@ object Modules {
     }
 
     private val domainModule = module {
+        single { AuthInteractor(get()) }
         single { UserInteractor(get()) }
     }
 
     private val viewModelModule = module {
-        viewModel { MainViewModel(get()) }
-        viewModel { LoginViewModel() }
+        viewModel { MainViewModel(get(), get()) }
+        viewModel { LoginViewModel(get()) }
         viewModel { ProfileViewModel(get()) }
         viewModel { ReposViewModel(get()) }
         viewModel { StarsViewModel(get()) }

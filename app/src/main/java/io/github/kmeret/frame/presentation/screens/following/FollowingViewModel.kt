@@ -21,13 +21,7 @@ class FollowingViewModel(
     }
 
     fun requestFollowingList() {
-        safeSubscribe {
-            userInteractor.requestFollowingList().execute(
-                isLoading = { isLoading.onNext(it) },
-                onSuccess = { followingList.onNext(it) },
-                onError = { errors.onNext(it) }
-            )
-        }
+        userInteractor::requestFollowingList.subscribe { followingList.onNext(it) }
     }
 
 }

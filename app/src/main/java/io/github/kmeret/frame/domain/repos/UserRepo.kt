@@ -5,9 +5,9 @@ import io.github.kmeret.frame.domain.model.Repo
 import io.github.kmeret.frame.domain.model.User
 
 interface UserRepo {
-    suspend fun getProfile(username: String): Profile
-    suspend fun getRepoList(username: String): List<Repo>
-    suspend fun getStarredList(username: String): List<Repo>
-    suspend fun getFollowerList(username: String): List<User>
-    suspend fun getFollowingList(username: String): List<User>
+    suspend fun getProfile(): Profile
+    suspend fun getRepoList(): List<Repo>
+    suspend fun getStarredList(): List<Repo>
+    suspend fun getFollowerList(): List<User>
+    suspend fun getFollowingList(): List<User>
 }

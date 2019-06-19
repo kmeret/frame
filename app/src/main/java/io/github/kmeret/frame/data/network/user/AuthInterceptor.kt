@@ -10,7 +10,7 @@ class AuthInterceptor(
 ) : Interceptor {
 
     override fun intercept(chain: Interceptor.Chain): Response {
-        val token = authRepo.getToken() ?: throw AuthException()
+        val token = authRepo.getAuthToken() ?: throw AuthException()
 
         val request = chain.request().newBuilder().apply {
             addHeader("Authorization", "Bearer $token")

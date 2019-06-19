@@ -21,13 +21,7 @@ class ReposViewModel(
     }
 
     fun requestRepoList() {
-        safeSubscribe {
-            userInteractor.requestRepoList().execute(
-                isLoading = { isLoading.onNext(it) },
-                onSuccess = { repoList.onNext(it) },
-                onError = { errors.onNext(it) }
-            )
-        }
+        userInteractor::requestRepoList.subscribe { repoList.onNext(it) }
     }
 
 }

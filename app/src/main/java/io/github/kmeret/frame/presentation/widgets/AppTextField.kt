@@ -30,6 +30,8 @@ class AppTextField @JvmOverloads constructor(
         }
     }
 
+    fun getValue() = input.text.toString()
+
     private fun setHint(text: String) {
         layout.hint = text
     }

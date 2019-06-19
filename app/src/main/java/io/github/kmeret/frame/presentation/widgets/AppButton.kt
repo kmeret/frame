@@ -25,6 +25,10 @@ class AppButton @JvmOverloads constructor(
         }
     }
 
+    override fun setOnClickListener(onClickListener: OnClickListener?) {
+        button.setOnClickListener(onClickListener)
+    }
+
     private fun setTitle(text: String) {
         button.text = text
     }

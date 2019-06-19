@@ -2,6 +2,7 @@
 <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
 	android:id="@+id/profile_refresh"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
@@ -40,6 +41,7 @@
 					android:layout_marginStart="16dp"
 					app:layout_constraintTop_toTopOf="parent"
 					app:layout_constraintStart_toStartOf="parent"
+					tools:src="@drawable/ic_github_logo"
 					/>
 				
 				<androidx.appcompat.widget.AppCompatTextView
@@ -87,7 +89,6 @@
 					android:layout_marginTop="16dp"
 					app:layout_constraintTop_toBottomOf="@+id/profile_bio"
 					app:layout_constraintStart_toStartOf="@id/profile_bio"
-					app:layout_constraintEnd_toEndOf="@id/profile_bio"
 					app:layout_constraintBottom_toTopOf="@+id/profile_location"
 					/>
 				
@@ -100,7 +101,6 @@
 					android:layout_marginTop="8dp"
 					app:layout_constraintTop_toBottomOf="@+id/profile_company"
 					app:layout_constraintStart_toStartOf="@id/profile_company"
-					app:layout_constraintEnd_toEndOf="@id/profile_company"
 					app:layout_constraintBottom_toBottomOf="@id/profile_avatar"
 					/>
 				

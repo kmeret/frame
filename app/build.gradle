@@ -16,6 +16,13 @@ android {
         vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField "String", "API_ENDPOINT", '"https://api.github.com/"'
+        try {
+            buildConfigField "String", "API_CLIENT_ID", GITHUB_CLIENT_ID
+            buildConfigField "String", "API_CLIENT_SECRET", GITHUB_CLIENT_SECRET
+        }
+        catch (ignored) {
+            throw new Exception("Define GITHUB_CLIENT_ID and GITHUB_CLIENT_SECRET in global gradle.properties!")
+        }
     }
 
     compileOptions {
@@ -32,7 +39,7 @@ android {
                 keyPassword KEY_PASSWORD
             }
             catch (ignored) {
-                throw new Exception("You should define KEYSTORE_PASSWORD and KEY_PASSWORD in global gradle.properties file.")
+                throw new Exception("Define KEYSTORE_PASSWORD and KEY_PASSWORD in global gradle.properties!")
             }
         }
     }

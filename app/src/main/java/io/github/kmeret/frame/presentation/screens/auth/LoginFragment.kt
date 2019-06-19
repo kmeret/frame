@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.text.InputType
 import com.google.android.material.textfield.TextInputLayout
 import io.github.kmeret.frame.R
+import io.github.kmeret.frame.infrastructure.application.extensions.hideKeyboard
 import io.github.kmeret.frame.infrastructure.application.lifecycle.VMFragment
 import io.github.kmeret.frame.infrastructure.presentation.extensions.isGone
 import io.github.kmeret.frame.infrastructure.presentation.extensions.isVisible
@@ -21,6 +22,10 @@ class LoginFragment : VMFragment<LoginViewModel>() {
         login_password.run {
             layout.endIconMode = TextInputLayout.END_ICON_PASSWORD_TOGGLE
             input.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+        }
+        login_button.setOnClickListener {
+            hideKeyboard(it)
+            viewModel.onLoginButtonPressed(login_username.getValue(), login_password.getValue())
         }
     }
 

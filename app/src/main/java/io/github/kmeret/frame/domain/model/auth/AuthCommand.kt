@@ -1,9 +1,9 @@
-package io.github.kmeret.frame.domain.model
+package io.github.kmeret.frame.domain.model.auth
 
 import io.github.kmeret.frame.infrastructure.application.lifecycle.VMCommand
 
 
 sealed class AuthCommand : VMCommand {
-    object Login : AuthCommand()
-    object Logout : AuthCommand()
+    object SignIn : AuthCommand()
+    object SignOut : AuthCommand()
 }

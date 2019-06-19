@@ -3,6 +3,7 @@ package io.github.kmeret.frame.presentation.screens.profile
 import android.os.Bundle
 import io.github.kmeret.frame.R
 import io.github.kmeret.frame.domain.model.Repo
+import io.github.kmeret.frame.domain.model.auth.AuthCommand
 import io.github.kmeret.frame.infrastructure.application.lifecycle.VMFragment
 import io.github.kmeret.frame.infrastructure.presentation.extensions.initGrid
 import io.github.kmeret.frame.infrastructure.presentation.extensions.isGone
@@ -39,6 +40,7 @@ class ProfileFragment : VMFragment<ProfileViewModel>() {
             initGrid(reposAdapter, 2)
             isNestedScrollingEnabled = false
         }
+        profile_avatar.setOnClickListener { viewModel.commands.onNext(AuthCommand.SignOut) }
     }
 
     override fun subscribeLiveData() {

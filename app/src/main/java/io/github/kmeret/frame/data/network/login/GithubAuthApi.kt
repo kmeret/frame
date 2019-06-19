@@ -1,15 +1,20 @@
 package io.github.kmeret.frame.data.network.login
 
-import retrofit2.http.Body
-import retrofit2.http.Header
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface GithubAuthApi {
 
     @POST("authorizations")
     suspend fun createAuth(
-        @Header("Authorization") basic: String,
-        @Body githubAuthRequest: GithubAuthRequest = GithubAuthRequest()
+        @Header("Authorization") basicAuth: String,
+        @Body githubAuthRequest: GithubAuthRequest
     ): GithubAuthResponse
+
+    @DELETE("applications/{client_id}/tokens/{access_token}")
+    suspend fun revokeAuth(
+        @Header("Authorization") basicAuth: String,
+        @Path("client_id") clientId: String,
+        @Path("access_token") token: String
+    )
 
 }

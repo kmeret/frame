@@ -21,10 +21,6 @@ class ProfileViewModel(
     }
 
     fun requestProfile() {
-        userInteractor::requestProfile.subscribe { result ->
-            handleResult<Profile>(result) {
-                networkProfile.onNext(it)
-            }
-        }
+        userInteractor::requestProfile.subscribe { networkProfile.onNext(it) }
     }
 }

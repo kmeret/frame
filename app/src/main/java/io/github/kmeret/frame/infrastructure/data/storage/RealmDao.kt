@@ -14,7 +14,7 @@ class RealmDao {
 
     inline fun <reified T : RealmModel> findFirst(): T? {
         return Realm.getDefaultInstance().use {
-            it.where<T>().findFirstAsync()
+            it.copyFromRealm(it.where<T>().findFirst() ?: return null)
         }
     }
 

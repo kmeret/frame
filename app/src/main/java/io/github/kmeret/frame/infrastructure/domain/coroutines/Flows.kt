@@ -1,11 +1,13 @@
+@file:Suppress("EXPERIMENTAL_API_USAGE")
+
 package io.github.kmeret.frame.infrastructure.domain.coroutines
 
-import kotlinx.coroutines.ExperimentalCoroutinesApi
+import io.github.kmeret.frame.infrastructure.domain.Result
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flow
 
-@ExperimentalCoroutinesApi
+
 fun <T> Flow<T>.execute(result: (Result) -> Unit) = flow<T> {
     result.invoke(Result.Loading(true))
     try {
