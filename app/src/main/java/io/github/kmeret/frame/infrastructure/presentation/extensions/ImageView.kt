@@ -5,7 +5,7 @@ import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.core.content.ContextCompat
-import com.bumptech.glide.Glide
+import com.squareup.picasso.Picasso
 
 fun AppCompatImageView.setIcon(@DrawableRes iconRes: Int) {
     setImageDrawable(ContextCompat.getDrawable(context, iconRes))
@@ -16,7 +16,10 @@ fun AppCompatImageView.setColor(@ColorRes colorRes: Int) {
 }
 
 fun AppCompatImageView.loadByUrl(url: String) {
-    Glide.with(context)
+    Picasso.get()
         .load(url)
         .into(this)
+//    Glide.with(context)
+//        .load(url)
+//        .into(this)
 }

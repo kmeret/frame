@@ -16,9 +16,9 @@ interface GithubUserApi {
     @GET("user/repos")
     suspend fun getRepoList(): List<GithubRepo>
 
-    @GET("/user/followers")
+    @GET("user/followers")
     suspend fun getFollowerList(): List<GithubUser>
 
-    @GET("/user/following")
+    @GET("user/following")
     suspend fun getFollowingList(): List<GithubUser>
 }

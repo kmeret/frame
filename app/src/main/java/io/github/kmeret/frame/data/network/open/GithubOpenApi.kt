@@ -17,10 +17,10 @@ interface GithubOpenApi {
     @GET("users/{username}/repos")
     suspend fun getRepoList(@Path("username") username: String): List<GithubRepo>
 
-    @GET("/users/{username}/followers")
+    @GET("users/{username}/followers")
     suspend fun getFollowerList(@Path("username") username: String): List<GithubUser>
 
-    @GET("/users/{username}/following")
+    @GET("users/{username}/following")
     suspend fun getFollowingList(@Path("username") username: String): List<GithubUser>
 
 }
