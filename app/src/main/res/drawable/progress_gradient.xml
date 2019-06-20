@@ -22,7 +22,7 @@
 		<gradient
 			android:angle="0"
 			android:endColor="@color/primary"
-			android:startColor="#00ffffff"
+			android:startColor="@color/transparent"
 			android:type="sweep"
 			android:useLevel="false"
 			/>
