@@ -5,6 +5,7 @@ import android.text.SpannableStringBuilder
 import android.text.TextWatcher
 import android.view.inputmethod.EditorInfo
 import android.widget.EditText
+import kotlin.math.abs
 
 fun EditText.onTextChanged(action: (text: String, length: Int) -> Unit) {
     val length = text.length
@@ -12,7 +13,7 @@ fun EditText.onTextChanged(action: (text: String, length: Int) -> Unit) {
         override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
             if (s == null) return
 
-            val fromUser = Math.abs(count - before) == 1
+            val fromUser = abs(count - before) == 1
 
             if (fromUser) action.invoke(s.toString(), length)
         }

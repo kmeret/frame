@@ -13,7 +13,7 @@ class NormalSpinner @JvmOverloads constructor(
 
     private var onItemClick: OnItemClickListener? = null
 
-    override fun setOnItemClickListener(onItemClickListener: OnItemClickListener) {
+    override fun setOnItemClickListener(onItemClickListener: OnItemClickListener?) {
         this.onItemClick = onItemClickListener
     }
 

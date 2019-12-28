@@ -16,7 +16,7 @@ class ErrorInterceptor : Interceptor {
             chain.proceed(chain.request())
         } catch (th: IOException) {
             if (BuildConfig.DEBUG) {
-                Log.d("OkHttp", th.localizedMessage)
+                Log.d("OkHttp", th.message.toString())
             }
 
             when (th) {
