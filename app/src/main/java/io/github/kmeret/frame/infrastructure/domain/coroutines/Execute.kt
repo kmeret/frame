@@ -2,7 +2,6 @@ package io.github.kmeret.frame.infrastructure.domain.coroutines
 
 import io.github.kmeret.frame.infrastructure.domain.Result
 import kotlinx.coroutines.*
-import kotlin.coroutines.CoroutineContext
 
 fun <T> (suspend () -> T).execute(result: (Result) -> Unit): Job {
     return CoroutineScope(Dispatchers.Main).launch {
@@ -18,7 +17,10 @@ fun <T> (suspend () -> T).execute(result: (Result) -> Unit): Job {
     }
 }
 
-fun <T, R> (suspend (R) -> T).execute(args: R, context: CoroutineContext = Dispatchers.IO, result: (Result) -> Unit): Job {
+fun <T, R> (suspend (R) -> T).execute(
+    args: R,
+    result: (Result) -> Unit
+): Job {
     return CoroutineScope(Dispatchers.Main).launch {
         result.invoke(Result.Loading(true))
         try {
